@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📋 包装思路文档 · 梦华小院</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #faf6f0;
+    color: #3d3028;
+    line-height: 1.85;
+  }
+  .doc-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  .doc-header {
+    text-align: center;
+    padding: 36px 20px 28px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(180,140,100,0.18);
+  }
+  .doc-header h1 { font-size: 1.9em; color: #5a4028; letter-spacing: 2px; }
+  .doc-header .meta { font-size: 0.84em; color: #9a8a78; margin-top: 10px; }
+  
+  /* 返回导航 */
+  .back-nav {
+    display: inline-block;
+    padding: 7px 18px;
+    background: rgba(107,68,35,0.08);
+    color: #6b4423;
+    border-radius: 8px;
+    font-size: 0.85em;
+    text-decoration: none;
+    margin-bottom: 22px;
+    transition: background 0.2s;
+  }
+  .back-nav:hover { background: rgba(107,68,35,0.15); }
+
+  /* Markdown内容样式 */
+  .content { 
+    background: rgba(255,255,255,0.82); 
+    padding: 36px 38px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(180,140,100,0.13);
+  }
+
+  h1 { font-size: 1.65em; color: #5a4028; margin: 34px 0 16px; border-bottom: 2px solid #e8d4b8; padding-bottom: 8px; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.35em; color: #6b4423; margin: 30px 0 14px; padding-left: 12px; border-left: 4px solid #d4a574; }
+  h3 { font-size: 1.12em; color: #7a5a38; margin: 24px 0 10px; }
+  h4 { font-size: 1em; color: #8a6a48; margin: 18px 0 8px; }
+
+  p { margin: 10px 0; font-size: 0.94em; }
+  
+  blockquote {
+    margin: 16px 0; padding: 14px 20px;
+    background: linear-gradient(to right, #f5ead8, transparent);
+    border-left: 4px solid #c9a86c;
+    color: #6a5848;
+    font-size: 0.91em;
+    border-radius: 0 8px 8px 0;
+  }
+  blockquote p { margin: 6px 0; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0;
+    font-size: 0.88em;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 6px rgba(74,55,40,0.08);
+  }
+  th {
+    background: #6b4423; color: #fff; padding: 11px 14px;
+    text-align: left; font-weight: 500;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #eee8de; }
+  tr:nth-child(even) { background: #fdfbf7; }
+  tr:hover { background: #f8f0e0; }
+
+  code {
+    background: #efe5d5; padding: 2px 7px; border-radius: 4px;
+    font-size: 0.87em; color: #8b6914;
+  }
+  pre {
+    background: #2d2418; color: #e8dcc8; padding: 20px 22px;
+    border-radius: 10px; overflow-x: auto; margin: 18px 0;
+    line-height: 1.7; font-size: 0.85em;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+
+  strong { color: #5a4028; }
+  hr { border: none; border-top: 1px solid #e8d4b8; margin: 28px 0; }
+
+  ul, ol { margin: 10px 0; padding-left: 26px; }
+  li { margin: 5px 0; font-size: 0.93em; }
+  li > ul, li > ol { margin: 4px 0; }
+
+  .footer-nav {
+    text-align: center; margin-top: 36px; padding-top: 22px;
+    border-top: 1px solid #e8d4b8;
+  }
+  .footer-nav a { color: #8b6914; font-size: 0.85em; text-decoration: none; }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 650px) {
+    .doc-container { padding: 20px 12px 40px; }
+    .content { padding: 22px 18px; }
+    th, td { padding: 8px 10px; font-size: 0.82em; }
+    pre { padding: 14px; font-size: 0.78em; overflow-x: auto; }
+  }
+</style>
+
+</head>
+<body>
+<div class="doc-container">
+  <div class="doc-header">
+    <h1>📋 包装思路文档</h1>
+    <div class="meta">梦华小院项目文档 · One Piece Studio</div>
+  </div>
+
+  <a href="index.html" class="back-nav">← 返回文档中心</a>
+
+  <div class="content">
+<h1 id="_1">梦华小院 · 产品包装思路文档</h1>
+<blockquote>
+<p><strong>产品名：梦华小院</strong>
+<strong>Slogan：种什么得什么</strong>
+<strong>定位：李子柒式田园茶饮生活模拟器（种植向）</strong>
+日期：2026-04-28</p>
+</blockquote>
+<hr />
+<h2 id="_2">一、产品定位</h2>
+<h3 id="11">1.1 核心设定</h3>
+<pre class="codehilite"><code>产品名：梦华小院
+Slogan：种什么得什么
+定位：李子柒式田园茶饮生活模拟器（⭐ 种植向）
+文化源头：北宋·孟元老《东京梦华录》（公共领域古籍）
+
+玩家身份：来到汴梁、拥有一座小院的掌柜（穿越者）
+核心行为：在后院种植食材 → 在前厅调制茶饮甜品 → 接待客人过日子
+情感主线：从市集小摊起步 → 雅士常来 → 贡品订单 → 触碰上古传说
+视觉风格：温暖质朴的田园风（非精致高端，非Q版卡通——有烟火气的好看）
+目标用户：下沉市场为主 + 向往慢生活的打工人 + 喜欢李子柒式内容的用户
+</code></pre>
+
+<h3 id="12">1.2 文化内核</h3>
+<p>梦华小院的文化内涵 = <strong>展示而非考据，自信而不晦涩</strong>：</p>
+<ul>
+<li>对中国茶文化的了解与展示（宋代点茶/熟水/果子体系）</li>
+<li>对宋元时期花卉、水果、本草等材料的了解（每种食材都有典籍出处）</li>
+<li>食材名字取自《诗经》《本草纲目》《梦华录》等古籍，体现命名美学</li>
+<li>通过"穿越者+丝绸之路贸易"合理解释食材多样性（西域/南洋/西洋来物）</li>
+<li><strong>功能文案全白话，只有食材名和成品名引经据典——高级感来自名字，不来自晦涩</strong></li>
+</ul>
+<blockquote>
+<p><strong>一句话定位：梦华小院——种什么得什么。</strong>
+不是种花游戏，不是纯经营游戏，是<strong>一座小院的慢生活模拟器，种的是自己种的，喝的是自己泡的。</strong></p>
+</blockquote>
+<hr />
+<h2 id="_3">二、核心玩法结构</h2>
+<h3 id="21">2.1 玩家收集什么</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">收集对象</th>
+<th style="text-align: left;">是什么</th>
+<th style="text-align: left;">驱动力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>① 食材/植物</strong></td>
+<td style="text-align: left;">鲜果 + 花卉 + 本草（~514种）</td>
+<td style="text-align: left;">"我种齐了！" — 种植向核心</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>② 茶饮/甜品成品</strong></td>
+<td style="text-align: left;">底卡+三槽位食材组合（数千组合）</td>
+<td style="text-align: left;">"我是茶艺大师！" — 深度追求</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 玩家做什么</h3>
+<table>
+<thead>
+<tr>
+<th>行为</th>
+<th>说明</th>
+<th style="text-align: center;">复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>种植</strong></td>
+<td>后院播种→浇水→采摘，产出三大类食材（鲜果/花卉/本草）</td>
+<td style="text-align: center;">★☆☆</td>
+</tr>
+<tr>
+<td><strong>卖熟水（快轨）</strong></td>
+<td>居民来买熟水 → 选食材→一键制作并交付</td>
+<td style="text-align: center;">★★☆</td>
+</tr>
+<tr>
+<td><strong>做茶饮/甜品（精轨）</strong></td>
+<td>选底卡（茶具+底底）+ 三槽位食材搭配 → 深度调制</td>
+<td style="text-align: center;">★★★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23">2.3 两层图鉴</h3>
+<table>
+<thead>
+<tr>
+<th>图鉴</th>
+<th>内容</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌱 <strong>食材图鉴</strong></td>
+<td>~514种食材（鲜果/花卉/本草）</td>
+<td>唯一种植收集核心；每种有古雅名+典故+诗词+产地故事</td>
+</tr>
+<tr>
+<td>🏆 <strong>茶饮图鉴</strong></td>
+<td>数千种成品组合</td>
+<td>深度制作追求；由底卡+槽位组合产生</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关于熟水</strong>：每种食材对应唯一一种熟水（如荔枝→荔子饮），有多少食材就有多少熟水。熟水是居民订单的交付载体，<strong>不是独立图鉴</strong>——玩家在图鉴中收集的是食材本身。</p>
+</blockquote>
+<h3 id="24">2.4 双轨制经营</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">轨道</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">行为本质</th>
+<th style="text-align: left;">目标用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>快轨</strong></td>
+<td style="text-align: left;">熟水订单（居民订单）</td>
+<td style="text-align: left;">单一食材 → 一键制作并交付熟水订单</td>
+<td style="text-align: left;">全部玩家</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>精轨</strong></td>
+<td style="text-align: left;">雅客/宫宴订单</td>
+<td style="text-align: left;">底卡 + 三槽位食材深度组合制作</td>
+<td style="text-align: left;">进阶玩家</td>
+</tr>
+</tbody>
+</table>
+<p><strong>卖熟水的完整流程</strong>：
+- 居民NPC提出需求（"我要3杯紫苏饮""来2碗薄荷汤"）
+- 玩家从已有食材中选择对应的 → <strong>一键制作并交付</strong>，获得铜钱
+- <strong>不表现制作过程</strong>——UI上通过图标/名称的强关联性让玩家直观感知"紫苏叶→紫苏饮"
+- 快轨的核心是<strong>效率</strong>：选完即完成，日常循环顺畅</p>
+<blockquote>
+<p><strong>与精轨的关键差异</strong>：快轨一键完成无动画；精轨有15-25秒李子柒式调制动画。快=效率，精=体验。</p>
+</blockquote>
+<h3 id="25">2.5 双成长线</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">成长线</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">来源</th>
+<th style="text-align: left;">追求方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>①</strong></td>
+<td style="text-align: left;">🌱 种植等级 / 园丁称号</td>
+<td style="text-align: left;">播种/浇水/采摘/施肥</td>
+<td style="text-align: left;">解锁稀有种苗 / 提升产量 / 扩大种植上限 / 解锁全食材图鉴</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>②</strong></td>
+<td style="text-align: left;">🍵 茶艺等级 / 茶师称号</td>
+<td style="text-align: left;">熟水+茶饮甜品制作</td>
+<td style="text-align: left;">解锁更多底卡 / 提升成功率 / 茶坊升级 / 解锁全茶饮图鉴</td>
+</tr>
+</tbody>
+</table>
+<p>两条线独立推进，覆盖不同偏好：
+- 只爱种不爱做 → <strong>园丁路线专精</strong>
+- 只爱做不爱种 → <strong>茶师路线专精</strong>
+- 两样都爱 → <strong>双修完整体验</strong></p>
+<hr />
+<h2 id="_4">三、世界观架构</h2>
+<h3 id="31">3.1 空间关系</h3>
+<pre class="codehilite"><code>┌─────────────────────────────────────┐
+│           东 京 · 汴 梁              │
+│                                     │
+│   ┌──────────┐    ┌───────────┐     │
+│   │ 后院茶圃  │───→│ 前厅茶坊   │     │
+│   │ (种植区)  │    │ (经营区)   │     │
+│   │          │    │           │     │
+│   │ 田畦64块  │    │ 熟水柜台   │     │  ← 卖熟水(居民订单)
+│   │ 清泉井    │    │ 茶饮调制台  │     │  ← 做茶饮(底卡+三槽)
+│   │           │    │ 果子陈列架  │     │  ← 甜品出品
+│   └──────────┘    └───────────┘     │
+│        ↑                ↑           │
+│    种植玩法          经营玩法         │
+│   (核心乐趣①)      (核心乐趣②)      │
+│                                     │
+│   ┌──────────┐    ┌───────────┐     │
+│   │ 茶行公会  │    │ 东京市集   │     │
+│   │ (社交区)  │    │ (交易区)   │     │
+│   └──────────┘    └───────────┘     │
+└─────────────────────────────────────┘
+</code></pre>
+
+<h3 id="32">3.2 穿越者叙事线（隐藏）</h3>
+<p>27张上古传说级底卡中，7张为<strong>穿越者秘方系列</strong>：</p>
+<pre class="codehilite"><code>市井级  →  冰镇消暑底（把冰饮技法带入市集）
+                ↓
+雅士级  →  草莓乳底 / 冰沙底（新奇饮料被文人追捧）
+                ↓
+贡品级  →  奶沫顶底 / 碾茶乳底（惊动贵族，成为宫廷新宠）
+                ↓
+上古级  →  圆子奶茶底 / 杨枝甘露底（珍珠奶茶 = 未来之饮）
+</code></pre>
+
+<hr />
+<h2 id="_5">四、设计原则</h2>
+<h3 id="41">4.1 七大原则</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>原则</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1</strong></td>
+<td><strong>术语宋化</strong></td>
+<td>UI文案使用宋代语汇</td>
+<td>水滴→清泉、种子→种苗、背包→茶箱</td>
+</tr>
+<tr>
+<td><strong>P2</strong></td>
+<td><strong>叙事包裹</strong></td>
+<td>功能描述升级为场景化叙述</td>
+<td>"看广告缩短时间"→"勤心呵护，待时辰到则瓜熟蒂落"</td>
+</tr>
+<tr>
+<td><strong>P3</strong></td>
+<td><strong>玩法不变</strong></td>
+<td>底层数值逻辑保持一致，只改表皮</td>
+<td>订单结构/产出公式/VIP权益不变</td>
+</tr>
+<tr>
+<td><strong>P4</strong></td>
+<td><strong>体验升维</strong></td>
+<td>不改机制的前提下提升沉浸感</td>
+<td>设置页→账房先生整理账册背景</td>
+</tr>
+<tr>
+<td><strong>P5</strong> ⭐</td>
+<td><strong>种植为本</strong></td>
+<td>种植不是材料的来源，而是<strong>核心乐趣本身</strong></td>
+<td>食材有独立图鉴页/植株可展示/种植有专属经验线</td>
+</tr>
+<tr>
+<td><strong>P6</strong></td>
+<td><strong>文案白话化</strong></td>
+<td>操作/说明/提示全用大白话；<strong>文雅词汇仅限食材名和成品名</strong></td>
+<td>按钮写"种下去"不写"播种"；但食材叫"离支""丹若""水芝"——<strong>名字本身就是高级感来源</strong></td>
+</tr>
+<tr>
+<td><strong>P7</strong> ⭐</td>
+<td><strong>文化自信（不是文青）</strong></td>
+<td>文化内涵 = <strong>知识展示而非门槛设置</strong></td>
+<td>玩家不需要懂茶文化才能玩，但玩了之后自然了解。边玩边涨知识，不费力的文化获得感</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">4.2 禁止事项</h3>
+<ul>
+<li>❌ 不引入与现代不符的科技概念</li>
+<li>❌ 不破坏原有的数值平衡体系</li>
+<li>❌ 不增加新的学习成本（新术语必须直觉可理解）</li>
+<li>❌ 不使用过于生僻的文言（目标玩家不是宋史专家）</li>
+<li>❌ <strong>不在操作按钮/提示中使用文雅词汇</strong>——白话和白话，雅名留给食材和成品名</li>
+<li>❌ <strong>不将种植物降级为纯粹的材料</strong>（每种食材都应有存在感、故事感和收集价值）</li>
+</ul>
+<hr />
+<h2 id="_6">五、系统映射总览</h2>
+<h3 id="51">5.1 十四大系统域</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th style="text-align: center;">系统</th>
+<th style="text-align: left;">新名</th>
+<th style="text-align: left;">核心变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: center;">基础种植</td>
+<td style="text-align: left;">种植/灌溉/采摘</td>
+<td style="text-align: left;">术语宋化 + 叙事增强 + <strong>新增种植经验线</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: center;">订单/售卖</td>
+<td style="text-align: left;">熟水订单 + 雅客/宫宴订单</td>
+<td style="text-align: left;"><strong>双轨制</strong>：快轨=卖熟水，精轨=做茶饮</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: center;">快速行为</td>
+<td style="text-align: left;">卖熟水</td>
+<td style="text-align: left;">选食材→一键制作并交付</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: center;">深度制作</td>
+<td style="text-align: left;">茶饮/甜品（底卡+食材）</td>
+<td style="text-align: left;">最核心的变化</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: center;">图鉴系统</td>
+<td style="text-align: left;"><strong>🌱食材图鉴 + 🏆茶饮图鉴（2层并列）</strong></td>
+<td style="text-align: left;">食材=唯一种植收集核心，名字古雅有文化</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: center;">社交公会</td>
+<td style="text-align: left;">茶行</td>
+<td style="text-align: left;">框架重构</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: center;">换装</td>
+<td style="text-align: left;">妆扮（宋代服饰风）</td>
+<td style="text-align: left;">风格重塑</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align: center;">好友</td>
+<td style="text-align: left;">相识/知己（递帖制）</td>
+<td style="text-align: left;">交互优化</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align: center;">聊天</td>
+<td style="text-align: left;">私叙/全城茶话/茶行内谈</td>
+<td style="text-align: left;">文案替换</td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align: center;">活动玩法</td>
+<td style="text-align: left;">茶文化活动 + 种植节庆活动</td>
+<td style="text-align: left;">内容适配</td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align: center;">商业化</td>
+<td style="text-align: left;">掌柜令牌+茶坊商业</td>
+<td style="text-align: left;">付费点重新包装</td>
+</tr>
+<tr>
+<td>12</td>
+<td style="text-align: center;">灵韵系统</td>
+<td style="text-align: left;">食神赐福/灵韵（简化版）</td>
+<td style="text-align: left;">重点改造</td>
+</tr>
+<tr>
+<td>13</td>
+<td style="text-align: center;">个人展示</td>
+<td style="text-align: left;">茶坊主页/*<em>小院主页</em>/茶艺榜/园丁榜</td>
+<td style="text-align: left;">UI重包装 + <strong>新增种植排行</strong></td>
+</tr>
+<tr>
+<td>14</td>
+<td style="text-align: center;">周边工具</td>
+<td style="text-align: left;">信笺/案头/答疑等9项</td>
+<td style="text-align: left;">全面宋化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52">5.2 关键名词对照</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">术语</th>
+<th style="text-align: left;">类别</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">鲜果 / 花卉 / <strong>本草</strong></td>
+<td style="text-align: left;">产物（三大类）</td>
+<td style="text-align: left;"><strong>本草</strong>取中医药学概念，有文化底蕴（区别于植物学"草本"）</td>
+</tr>
+<tr>
+<td style="text-align: left;">茶饮/甜品成品</td>
+<td style="text-align: left;">深度制作成果</td>
+<td style="text-align: left;">底卡+三槽位的成品，第二收集核心</td>
+</tr>
+<tr>
+<td style="text-align: left;">底卡（茶具+底底）</td>
+<td style="text-align: left;">制作框架</td>
+<td style="text-align: left;">对应花园世界"花瓶"，精轨用</td>
+</tr>
+<tr>
+<td style="text-align: left;">主鲜果 + 辅<strong>本草</strong> + 花卉点缀</td>
+<td style="text-align: left;">配方槽位</td>
+<td style="text-align: left;">三槽位类别约束</td>
+</tr>
+<tr>
+<td style="text-align: left;">卖熟水</td>
+<td style="text-align: left;">快速变现行为</td>
+<td style="text-align: left;">居民订单：选食材→一键制作并交付（不表现制作过程）</td>
+</tr>
+<tr>
+<td style="text-align: left;">铜钱 / 纹银</td>
+<td style="text-align: left;">货币</td>
+<td style="text-align: left;">替代金币</td>
+</tr>
+<tr>
+<td style="text-align: left;">掌柜令牌</td>
+<td style="text-align: left;">付费特权</td>
+<td style="text-align: left;">替代VIP</td>
+</tr>
+<tr>
+<td style="text-align: left;">茶箱</td>
+<td style="text-align: left;">物品栏</td>
+<td style="text-align: left;">替代背包</td>
+</tr>
+<tr>
+<td style="text-align: left;">园丁称号 / 茶师称号</td>
+<td style="text-align: left;">双成长线</td>
+<td style="text-align: left;">种植线 + 茶艺线独立</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">六、重点系统说明</h2>
+<h3 id="61">6.1 食材系统（种植向核心）</h3>
+<h4 id="_8">三大类食材</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">类别</th>
+<th style="text-align: center;">数量</th>
+<th style="text-align: left;">角色</th>
+<th style="text-align: left;">命名特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>鲜果类</strong></td>
+<td style="text-align: center;">~188种</td>
+<td style="text-align: left;">主料（主鲜果槽）</td>
+<td style="text-align: left;">古籍雅名：玉李、离支（荔枝）、丹若（石榴）、水芝（莲子）</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>花卉类</strong></td>
+<td style="text-align: center;">~163种</td>
+<td style="text-align: left;">点缀/部分辅料</td>
+<td style="text-align: left;">古典花名：辛夷、荼蘼、木槿、菖蒲</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>本草类</strong></td>
+<td style="text-align: center;">~163种</td>
+<td style="text-align: left;">辅料（辅本草槽）</td>
+<td style="text-align: left;">中医药名：蕃荷（薄荷）、国老（甘草）、广陈皮</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>命名体系</strong>：每种食材采用古雅名分级体系——市井级用亲切俗名（蜜桃/青杏），雅士级取古籍原名（玉梨/离支），贡品/上古级加入仙境意象（瑶桃/碧霞橙）。所有名字均可在《诗经》《本草纲目》《梦华录》等典籍中找到出处。</p>
+</blockquote>
+<h4 id="_9">四级稀有度</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">等级</th>
+<th style="text-align: center;">数量</th>
+<th style="text-align: left;">代表</th>
+<th style="text-align: left;">感觉</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">市井级</td>
+<td style="text-align: center;">~172种</td>
+<td style="text-align: left;">蜜桃/青杏/金橘</td>
+<td style="text-align: left;">亲切实在，小镇集市常见</td>
+</tr>
+<tr>
+<td style="text-align: center;">雅士级</td>
+<td style="text-align: center;">~145种</td>
+<td style="text-align: left;">玉梨/离支/卢橘</td>
+<td style="text-align: left;">有品位，读书人知道的好名字</td>
+</tr>
+<tr>
+<td style="text-align: center;">贡品级</td>
+<td style="text-align: center;">~110种</td>
+<td style="text-align: left;">丹若/骊珠/水芝</td>
+<td style="text-align: left;">宫廷御用级别</td>
+</tr>
+<tr>
+<td style="text-align: center;">上古传说级</td>
+<td style="text-align: center;">~87种</td>
+<td style="text-align: left;">瑶桃/昆仑瓜/蓬莱橘</td>
+<td style="text-align: left;">近乎神话，穿越秘方才用的东西</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_10">食材多样性解释（穿越者叙事）</h4>
+<blockquote>
+<p>为什么游戏里有514种食材，远超宋代实际？
+- 玩家身份是<strong>穿越者</strong>，天然带来后世知识
+- 北宋汴梁是国际都市，<strong>丝绸之路贸易</strong>畅通无阻
+- 西域来的（葡萄/石榴/胡桃）、南洋来的（芒果/椰子/榴莲）、西洋来的（番茄/玉米/番薯）都可以合理出现
+- <strong>不需要完全符合史实，文化自信不等于历史考据</strong></p>
+</blockquote>
+<h3 id="62">6.2 熟水系统（快轨·居民订单）</h3>
+<ul>
+<li><strong>定义</strong>：宋代"饮子/熟水"品类——单一种食材熬制的清凉饮品</li>
+<li><strong>对应</strong>：《梦华录》中赵盼儿卖的紫苏饮子、薄荷饮、桂花酸梅汤等</li>
+<li><strong>规则</strong>：1种食材 = 1种熟水（严格1:1对应）</li>
+<li><strong>操作方式</strong>：<strong>一键制作+贩卖，不表现制作过程</strong>。UI上通过图标/名称强关联表达"紫苏叶→紫苏饮"的对应关系</li>
+<li><strong>角色</strong>：日常循环的核心行为（高效），引导玩家从"种"过渡到"做"</li>
+<li><strong>不是独立图鉴</strong>：它是订单交付载体，收集对象是底层食材</li>
+<li><strong>与精轨的区别</strong>：快轨=一键无动画（效率）；精轨=15-25秒调制动画（体验）</li>
+</ul>
+<h3 id="63">6.3 底卡系统（精轨·茶饮甜品）</h3>
+<ul>
+<li><strong>定义</strong>：底卡 = 茶具 + 底底，是制作茶饮/甜品的基础框架</li>
+<li><strong>数量</strong>：69张，分四级梯度（市井13/雅士15/贡品14/上古27）</li>
+<li><strong>槽位规则</strong>：类别约束型 —— 主鲜果槽 / 辅<strong>本草</strong>槽 / 花卉点缀槽</li>
+<li><strong>组合数</strong>：每张底卡的可用组合数从8种到27种不等</li>
+<li><strong>类型分布</strong>：茶饮花饮~32张、奶茶乳饮~10张、冷饮冰饮~5张、甜品冻/糕/布丁/仙饮共~22张</li>
+</ul>
+<h3 id="64">6.4 种植系统强化设计</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th style="text-align: center;">强化方向</th>
+<th style="text-align: left;">具体做法</th>
+<th style="text-align: left;">价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: center;"><strong>食材图鉴页丰富化</strong></td>
+<td style="text-align: left;">每种食材独立页面：古雅名+俗名 / 产地故事 / 古籍出处 / 药用或食用价值 / 关联诗词 / 助农信息</td>
+<td style="text-align: left;">让每棵植物都有"人格"和故事</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: center;"><strong>植株展示期</strong></td>
+<td style="text-align: left;">成熟期植株在小院内展示，可旋转查看；收获前是"观赏期"</td>
+<td style="text-align: left;">种植=装饰，双重价值</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: center;"><strong>种植随机变异</strong></td>
+<td style="text-align: left;">同种食材每次种植可能有微小差异（大小/颜色/特殊标签如"今年的桂花特别香"）</td>
+<td style="text-align: left;">增加重复种植乐趣</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: center;"><strong>助农实物联动</strong></td>
+<td style="text-align: left;">特定助农食材（赣南脐橙/阿克苏苹果等）种植达标后触发"丰收奖励"→ 真实水果寄送到家</td>
+<td style="text-align: left;"><strong>"种什么得什么"核心承载功能</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: center;"><strong>园丁排行榜</strong></td>
+<td style="text-align: left;">独立于茶艺榜的种植榜单：谁收集最多 / 等级最高 / 小院最美</td>
+<td style="text-align: left;">给纯种植玩家社交出口</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: center;"><strong>季节种植节奏</strong></td>
+<td style="text-align: left;">不同季节解锁不同食材种苗（呼应二十四节气）</td>
+<td style="text-align: left;">让种植与时间产生意义关联</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: center;"><strong>种苗交易</strong></td>
+<td style="text-align: left;">玩家之间互相赠送/交换种苗（替代"偷花"的社交方式）</td>
+<td style="text-align: left;">增强种植社交维度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="65">6.5 灵韵系统改造方向</h3>
+<p>原系统问题：规则复杂、付费门槛过高（约1000元起步）、耦合度低</p>
+<p>改造方向：
+- <strong>大幅简化</strong>：图标匹配替代复杂属性计算
+- <strong>降低门槛</strong>：首次付费从1000元降至6元级别
+- <strong>保留深度</strong>：免费可玩，付费加速/便览</p>
+<hr />
+<h2 id="_11">七、风险与应对</h2>
+<table>
+<thead>
+<tr>
+<th>风险</th>
+<th style="text-align: center;">等级</th>
+<th style="text-align: left;">应对方案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户规模潜力</td>
+<td style="text-align: center;">🟢 <strong>机会</strong></td>
+<td style="text-align: left;">下沉市场用户基数远超一二线，<strong>不是风险而是优势</strong></td>
+</tr>
+<tr>
+<td>灵韵系统改造失败</td>
+<td style="text-align: center;">🔴 高</td>
+<td style="text-align: left;">先上最简方案(A)，后续迭代</td>
+</tr>
+<tr>
+<td>材料多样性</td>
+<td style="text-align: center;">✅ 已解决</td>
+<td style="text-align: left;">穿越者+丝路贸易合理解释，不需要完全符合史实</td>
+</tr>
+<tr>
+<td>文案文青化</td>
+<td style="text-align: center;">✅ 已解决</td>
+<td style="text-align: left;">P6锁定：操作白话、名字雅名，已不是风险</td>
+</tr>
+<tr>
+<td>2048/消消乐突兀</td>
+<td style="text-align: center;">🟢 低</td>
+<td style="text-align: left;">作为附属mini-game接受，不强求贴合</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>配套文档：《具体包装方案——逐系统对照表》《食材命名规范（古雅名体系）》</em></p>
+  </div>
+
+  <div class="footer-nav">
+    <p><a href="index.html">← 返回文档中心</a></p>
+  </div>
+</div>
+</body>
+</html>

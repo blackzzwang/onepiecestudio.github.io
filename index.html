@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梦华小院 · 项目文档中心</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 50%, #dcc4a5 100%);
+    min-height: 100vh;
+    color: #4a3728;
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  /* 头部 */
+  .header {
+    text-align: center;
+    padding: 50px 30px 40px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(74,55,40,0.1);
+    border: 1px solid rgba(180,140,100,0.2);
+  }
+  
+  .header h1 {
+    font-size: 2.6em;
+    color: #6b4423;
+    margin-bottom: 8px;
+    letter-spacing: 6px;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.8);
+  }
+  
+  .header .slogan {
+    font-size: 1.15em;
+    color: #8b6914;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+  }
+  
+  .header .desc {
+    font-size: 0.92em;
+    color: #7a6a5a;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  /* 标签 */
+  .tag {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 20px;
+    font-size: 0.78em;
+    margin: 3px 4px;
+    vertical-align: middle;
+  }
+  .tag-green { background: #d4edda; color: #155724; }
+  .tag-gold { background: #fff3cd; color: #856404; }
+  .tag-red { background: #f8d7da; color: #721c24; }
+  .tag-blue { background: #d1ecf1; color: #0c5460; }
+
+  /* 文档卡片网格 */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+  }
+
+  .doc-card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 12px;
+    padding: 26px 22px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: 1px solid rgba(180,140,100,0.18);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .doc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(74,55,40,0.15);
+    border-color: rgba(180,140,100,0.4);
+  }
+
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 12px 0 0 12px;
+  }
+  .doc-card.type-core::before   { background: linear-gradient(to bottom, #d4a574, #8b6914); }
+  .doc-card.type-design::before { background: linear-gradient(to bottom, #7fb069, #4a7c59); }
+  .doc-card.type-review::before { background: linear-gradient(to bottom, #e07b53, #c0392b); }
+  .doc-card.type-data::before   { background: linear-gradient(to bottom, #6baed6, #2171b5); }
+  .doc-card.type-reply::before  { background: linear-gradient(to bottom, #9b8fd9, #6a4c93); }
+
+  .doc-card h3 {
+    font-size: 1.15em;
+    color: #5a4028;
+    margin-bottom: 10px;
+    padding-left: 8px;
+  }
+
+  .doc-card p {
+    font-size: 0.86em;
+    color: #8a7a68;
+    line-height: 1.75;
+    padding-left: 8px;
+  }
+
+  .doc-meta {
+    margin-top: 14px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .doc-date {
+    font-size: 0.78em;
+    color: #aaa;
+  }
+
+  /* 状态指示 */
+  .status-badge {
+    font-size: 0.76em;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+  .status-final { background: #d4edda; color: #155724; }
+  .status-draft { background: #fff3cd; color: #856404; }
+
+  /* 页脚 */
+  .footer {
+    text-align: center;
+    margin-top: 45px;
+    padding: 22px;
+    color: #aa9988;
+    font-size: 0.82em;
+  }
+
+  /* 响应式 */
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.9em; letter-spacing: 3px; }
+    .docs-grid { grid-template-columns: 1fr; }
+    .container { padding: 20px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>梦 华 小 院</h1>
+    <div class="slogan">种 什 么 得 什 么</div>
+    
+    <span class="tag tag-green">李子柒式田园茶饮</span>
+    <span class="tag tag-gold">种植向生活模拟</span>
+    <span class="tag tag-blue">下沉市场</span>
+    <span class="tag tag-red">文化自信</span>
+
+    <p class="desc" style="margin-top: 18px;">
+      在汴梁有座小院，后院种料前厅煮茶。<br>
+      前店后园，自产自销。以北宋《东京梦华录》为文化骨架，
+      用白话操作 + 雅致名字，让每位玩家边玩边涨知识。
+    </p>
+  </div>
+
+  <!-- 核心文档 -->
+  <div class="docs-grid">
+
+    <a href="packaging.html" class="doc-card type-core">
+      <h3>📋 包装思路文档</h3>
+      <p>产品定位、核心玩法结构、世界观架构、七大设计原则、十四大系统映射总览。对外展示版。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-final">最终版</span>
+        <span class="doc-date">2026-04-28</span>
+      </div>
+    </a>
+
+    <a href="spec.html" class="doc-card type-design">
+      <h3>🔧 具体包装方案</h3>
+      <p>十二大系统域、62个功能点的完整对照表。开发/美术/文案团队可直接使用的执行规格。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-final">最终版</span>
+        <span class="doc-date">2026-04-28</span>
+      </div>
+    </a>
+
+    <a href="feasibility.html" class="doc-card type-review">
+      <h3>✅ 可行性复核报告</h3>
+      <p>九大问题逐项验证：身份矛盾、熟水vs茶底、材料超纲、商业化闭环等。评分 95/100。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-final">最终版</span>
+        <span class="doc-date">2026-04-28</span>
+      </div>
+    </a>
+
+    <a href="review-reply.html" class="doc-card type-reply">
+      <h3>📝 内部评审回复</h3>
+      <p>对 Step 3 评审报告（95→54分）的逐条回应。三个P0风险的解答与方案修正。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-draft">讨论稿</span>
+        <span class="doc-date">2026-04-29</span>
+      </div>
+    </a>
+
+    <a href="design-v2.html" class="doc-card type-data">
+      <h3>🎴 底卡与食材系统 v2.0</h3>
+      <p>69张四级底卡（市井/雅士/贡品/上古传说）、514种食材（鲜果/花卉/本草）的完整设计数据。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-final">定稿</span>
+        <span class="doc-date">2026-04-27</span>
+      </div>
+    </a>
+
+    <a href="menghua-menu.html" class="doc-card type-core">
+      <h3>🍵 梦华录茶饮甜品清单</h3>
+      <p>基于《梦华录》剧集的饮品/果子完整清单，与游戏内熟水/底卡系统的映射关系。</p>
+      <div class="doc-meta">
+        <span class="status-badge status-draft">参考</span>
+        <span class="doc-date">—</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <p>One Piece Studio · 梦华小院项目 · 文档中心</p>
+    <p style="margin-top: 6px; opacity: 0.6;">本页面由 GitHub Pages 托管</p>
+  </div>
+
+</div>
+
+</body>
+</html>

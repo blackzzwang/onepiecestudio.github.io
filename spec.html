@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔧 具体包装方案 · 梦华小院</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #faf6f0;
+    color: #3d3028;
+    line-height: 1.85;
+  }
+  .doc-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  .doc-header {
+    text-align: center;
+    padding: 36px 20px 28px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(180,140,100,0.18);
+  }
+  .doc-header h1 { font-size: 1.9em; color: #5a4028; letter-spacing: 2px; }
+  .doc-header .meta { font-size: 0.84em; color: #9a8a78; margin-top: 10px; }
+  
+  /* 返回导航 */
+  .back-nav {
+    display: inline-block;
+    padding: 7px 18px;
+    background: rgba(107,68,35,0.08);
+    color: #6b4423;
+    border-radius: 8px;
+    font-size: 0.85em;
+    text-decoration: none;
+    margin-bottom: 22px;
+    transition: background 0.2s;
+  }
+  .back-nav:hover { background: rgba(107,68,35,0.15); }
+
+  /* Markdown内容样式 */
+  .content { 
+    background: rgba(255,255,255,0.82); 
+    padding: 36px 38px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(180,140,100,0.13);
+  }
+
+  h1 { font-size: 1.65em; color: #5a4028; margin: 34px 0 16px; border-bottom: 2px solid #e8d4b8; padding-bottom: 8px; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.35em; color: #6b4423; margin: 30px 0 14px; padding-left: 12px; border-left: 4px solid #d4a574; }
+  h3 { font-size: 1.12em; color: #7a5a38; margin: 24px 0 10px; }
+  h4 { font-size: 1em; color: #8a6a48; margin: 18px 0 8px; }
+
+  p { margin: 10px 0; font-size: 0.94em; }
+  
+  blockquote {
+    margin: 16px 0; padding: 14px 20px;
+    background: linear-gradient(to right, #f5ead8, transparent);
+    border-left: 4px solid #c9a86c;
+    color: #6a5848;
+    font-size: 0.91em;
+    border-radius: 0 8px 8px 0;
+  }
+  blockquote p { margin: 6px 0; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0;
+    font-size: 0.88em;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 6px rgba(74,55,40,0.08);
+  }
+  th {
+    background: #6b4423; color: #fff; padding: 11px 14px;
+    text-align: left; font-weight: 500;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #eee8de; }
+  tr:nth-child(even) { background: #fdfbf7; }
+  tr:hover { background: #f8f0e0; }
+
+  code {
+    background: #efe5d5; padding: 2px 7px; border-radius: 4px;
+    font-size: 0.87em; color: #8b6914;
+  }
+  pre {
+    background: #2d2418; color: #e8dcc8; padding: 20px 22px;
+    border-radius: 10px; overflow-x: auto; margin: 18px 0;
+    line-height: 1.7; font-size: 0.85em;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+
+  strong { color: #5a4028; }
+  hr { border: none; border-top: 1px solid #e8d4b8; margin: 28px 0; }
+
+  ul, ol { margin: 10px 0; padding-left: 26px; }
+  li { margin: 5px 0; font-size: 0.93em; }
+  li > ul, li > ol { margin: 4px 0; }
+
+  .footer-nav {
+    text-align: center; margin-top: 36px; padding-top: 22px;
+    border-top: 1px solid #e8d4b8;
+  }
+  .footer-nav a { color: #8b6914; font-size: 0.85em; text-decoration: none; }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 650px) {
+    .doc-container { padding: 20px 12px 40px; }
+    .content { padding: 22px 18px; }
+    th, td { padding: 8px 10px; font-size: 0.82em; }
+    pre { padding: 14px; font-size: 0.78em; overflow-x: auto; }
+  }
+</style>
+
+</head>
+<body>
+<div class="doc-container">
+  <div class="doc-header">
+    <h1>🔧 具体包装方案</h1>
+    <div class="meta">梦华小院项目文档 · One Piece Studio</div>
+  </div>
+
+  <a href="index.html" class="back-nav">← 返回文档中心</a>
+
+  <div class="content">
+<h1 id="_1">具体包装方案 —— 逐系统对照表</h1>
+<blockquote>
+<p><strong>产品名：梦华小院</strong>
+日期：2026-04-28
+配套文档：《包装思路文档》</p>
+</blockquote>
+<hr />
+<h2 id="_2">文档说明</h2>
+<p>本文档按<strong>系统模块</strong>逐项列出原包装（花园世界）与新包装（梦华小院）的完整对应关系，供开发/美术/文案团队直接使用。</p>
+<p><strong>列含义：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">列</th>
+<th style="text-align: left;">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>序号</strong></td>
+<td style="text-align: left;">系统内子项编号</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>功能点</strong></td>
+<td style="text-align: left;">原系统的具体功能描述</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>原包装（花园世界）</strong></td>
+<td style="text-align: left;">花园世界的原有文案/设计</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>新包装（梦华小院）</strong></td>
+<td style="text-align: left;">梦华小院的新文案/设计</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>备注</strong></td>
+<td style="text-align: left;">变更要点、注意事项</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">一、基础种植模块</h2>
+<h3 id="11">1.1 种植</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>核心循环</td>
+<td style="text-align: left;">播种 - 浇水 - 采集</td>
+<td style="text-align: left;">种下去 - 浇水 - 采摘</td>
+<td style="text-align: left;">操作按钮用大白话："种下去""浇一下""收起来"</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>种植单元</td>
+<td style="text-align: left;">合计64个格子，每隔一定等级解锁4个格子</td>
+<td style="text-align: left;">共64块田畦，每隔一定等级解锁4块（小院菜圃→山野庄园，渐次开辟）</td>
+<td style="text-align: left;">增加空间成长的叙事感</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>作物解锁</td>
+<td style="text-align: left;">鲜花种类解锁：升级、花坊、成就、活动</td>
+<td style="text-align: left;">食材种类解锁：升级、果子铺、成就、节令活动（梅子、枇杷、荔枝、桂花等应季食材）</td>
+<td style="text-align: left;">"花坊"→"果子铺"；增加"节令+应季食材"概念</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>生产资料</td>
+<td style="text-align: left;">种子产出：鲜花培育</td>
+<td style="text-align: left;">种苗产出：果苗培育（于茶坊铺子购苗，或探访山野寻得珍稀种苗）</td>
+<td style="text-align: left;">双来源：购买 + 探索获取</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>培育材料</td>
+<td style="text-align: left;">肥料，泥土，杀虫剂，光照等4类 * 等级若干</td>
+<td style="text-align: left;">农肥、沃土、灰水（驱虫），晴日（光照）等4类</td>
+<td style="text-align: left;">术语宋化但操作提示仍白话："该施肥了"不写"宜施农肥"</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>培育过程</td>
+<td style="text-align: left;">培育中，可观看广告缩短时间，到时间则培育成功</td>
+<td style="text-align: left;">长着呢，可以看广告快点长，时间到了就熟了</td>
+<td style="text-align: left;">功能不变，文案全白话</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12">1.2 浇水</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">7</td>
+<td>资源自动产出</td>
+<td style="text-align: left;">水滴产出1：跟随时间自动产出</td>
+<td style="text-align: left;">清泉产出1：随时间慢慢积攒</td>
+<td style="text-align: left;">"水滴"→"清泉"，资源名称可雅化</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>资源手动获取</td>
+<td style="text-align: left;">水滴产出2：每日定点领取、在线时长领取</td>
+<td style="text-align: left;">清泉产出2：每天早上领一份、在园子里待着也能攒</td>
+<td style="text-align: left;">操作提示白话</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>VIP快捷操作</td>
+<td style="text-align: left;">浇水 - VIP一键浇水</td>
+<td style="text-align: left;">浇水 - 掌柜令牌一键全部浇完</td>
+<td style="text-align: left;">VIP→掌柜令牌</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13">1.3 收获</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">10</td>
+<td>VIP快捷操作</td>
+<td style="text-align: left;">收获 - VIP一键收获</td>
+<td style="text-align: left;">采摘 - 掌柜令牌一键全部收完</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td>产物①</td>
+<td style="text-align: left;">采集获取：鲜花</td>
+<td style="text-align: left;">采摘所得：<strong>食材</strong>（三大类——鲜果类如梅子枇杷荔枝、花卉类如桂花菊花茉莉、<strong>本草</strong>类如薄荷紫苏甘草）</td>
+<td style="text-align: left;">单一产物→三类产物；<strong>本草</strong>=中医药学概念，有文化底蕴</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>产物②</td>
+<td style="text-align: left;">采集获取：经验值</td>
+<td style="text-align: left;">采摘所得：<strong>茶艺经验</strong>（做茶的手艺更熟练了）</td>
+<td style="text-align: left;">统一为"茶艺经验"</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>产物③</td>
+<td style="text-align: left;">采集获取：花灵</td>
+<td style="text-align: left;">采摘所得：灵韵（每种食材自带的隐藏属性）</td>
+<td style="text-align: left;">花灵→灵韵，纯收集向不加成数值</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>成长线①</td>
+<td style="text-align: left;">鲜花图鉴/鲜花升级：提升可采集次数，缩短采集时间</td>
+<td style="text-align: left;"><strong>食材图鉴</strong>/<strong>园丁等级</strong>：提升可采摘次数，缩短采摘时间</td>
+<td style="text-align: left;">食材图鉴是唯一种植收集核心；每种食材有古雅名+典故+诗词</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>成长线②</td>
+<td style="text-align: left;">（无独立种植线）</td>
+<td style="text-align: left;"><strong>种植经验</strong>（和茶艺经验并列的双成长线）</td>
+<td style="text-align: left;">只爱种的玩家走园丁路线，只爱做的走茶师路线</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">二、订单销售模块（双轨制）</h2>
+<h3 id="_5">核心机制</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">轨道</th>
+<th style="text-align: left;">订单类型</th>
+<th style="text-align: left;">行为本质</th>
+<th style="text-align: center;">复杂度</th>
+<th style="text-align: left;">目标用户</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>快轨</strong></td>
+<td style="text-align: left;">熟水订单（居民来买）</td>
+<td style="text-align: left;">选食材 → <strong>一键制作并交付</strong></td>
+<td style="text-align: center;">★★☆</td>
+<td style="text-align: left;">全部玩家</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>精轨</strong></td>
+<td style="text-align: left;">雅客/宫宴订单</td>
+<td style="text-align: left;">底卡 + 三槽位食材深度调制（15-25秒动画）</td>
+<td style="text-align: center;">★★★</td>
+<td style="text-align: left;">进阶玩家</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关键差异</strong>：快轨一键完成无动画（效率）；精轨有李子柒式调制动画（体验）。两者节奏对比鲜明。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">16</td>
+<td>快速消耗订单</td>
+<td style="text-align: left;">居民订单——根据库存花朵生成订单。定位：直接消耗已有花朵</td>
+<td style="text-align: left;"><strong>熟水订单</strong>——居民来买熟水，根据你有的食材生成订单。选对应食材→一键做成→交付，拿到铜钱</td>
+<td style="text-align: left;">金币→铜钱；<strong>不表现制作过程</strong>，UI上图标/名称强关联表达"紫苏叶→紫苏饮"</td>
+</tr>
+<tr>
+<td style="text-align: center;">17</td>
+<td>引导解锁订单</td>
+<td style="text-align: left;">顾客订单——根据已有花瓶生成订单。定位：通过花瓶促使玩家解锁新花</td>
+<td style="text-align: left;"><strong>雅客订单</strong>——根据已有茶具生成订单。借茶具搭配引导玩家尝试新食材</td>
+<td style="text-align: left;">花瓶→茶具</td>
+</tr>
+<tr>
+<td style="text-align: center;">18</td>
+<td>主动售卖</td>
+<td style="text-align: left;">花架订单——玩家主动选择售卖内容</td>
+<td style="text-align: left;"><strong>茶摊摆台</strong>——玩家主动选择卖什么熟水招揽客人</td>
+<td style="text-align: left;">花架→茶摊</td>
+</tr>
+<tr>
+<td style="text-align: center;">19</td>
+<td>大额目标订单</td>
+<td style="text-align: left;">宫廷订单——根据已有图鉴生成订单。定位：大量消耗单一花朵</td>
+<td style="text-align: left;"><strong>宫宴订单</strong>——根据已有食材图录生成御膳单。大量耗用单一食材（进贡御膳，光耀门楣）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">20</td>
+<td>限时团购</td>
+<td style="text-align: left;">团购订单——50秒内订单越多收益倍率越高</td>
+<td style="text-align: left;"><strong>庙会集订</strong>——50息内订单越多赚得越多。节日人潮涌动，快速出清</td>
+<td style="text-align: left;">团购→庙会集订</td>
+</tr>
+<tr>
+<td style="text-align: center;">21</td>
+<td>好友交易</td>
+<td style="text-align: left;">花卉市场——上架市场，可在好友之间购买/出售花朵</td>
+<td style="text-align: left;"><strong>食材坊市</strong>——上架坊市，好友之间买卖食材</td>
+<td style="text-align: left;">仅允许食材交易</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">核心制作系统（精轨）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">22</td>
+<td>组合制作</td>
+<td style="text-align: left;">鲜花组合（花艺）：多种花瓶，每种花瓶要求3种不同的花，1主花，2副花</td>
+<td style="text-align: left;"><strong>茶饮/甜品调制</strong>：69张底卡（茶具+底底），每张需搭3个<strong>类别约束槽位</strong>——1主鲜果 + 1辅<strong>本草</strong> + 1花卉点缀，方能调出一盏成品。同一张底卡不同食材组合 = 不同成品</td>
+<td style="text-align: left;">以底卡文档为准：<strong>类别约束型三槽位</strong>（非自由选择）。所有成品只有单一稀有度，无品质分级</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">三、图鉴收集系统</h2>
+<blockquote>
+<p><strong>两层图鉴，与花园世界结构完全一致（花卉→食材，花艺→茶饮）。</strong></p>
+</blockquote>
+<h3 id="_8">映射关系</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">原版（花园世界）</th>
+<th style="text-align: center;">→</th>
+<th style="text-align: left;">新版（梦华小院）</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>花卉图鉴</strong>（记录所有采过的花）</td>
+<td style="text-align: center;">→</td>
+<td style="text-align: left;"><strong>🌱食材图鉴</strong>（记录所有采摘过的食材·~514种）</td>
+<td style="text-align: left;">唯一种植收集核心。每种食材有古雅名+俗名/产地故事/古籍出处/诗词关联</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>花艺图鉴</strong>（记录所有做过的花艺作品）</td>
+<td style="text-align: center;">→</td>
+<td style="text-align: left;"><strong>🏆茶饮甜品图鉴</strong>（记录所有调制过的茶饮/甜品）</td>
+<td style="text-align: left;">深度制作收集维度。每张底卡+特定食材组合=一个成品条目</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">关于熟水</h3>
+<ul>
+<li>每种食材对应唯一一种熟水（1:1关系，如荔枝→荔子饮）</li>
+<li>熟水是<strong>居民订单的交付载体</strong>，不是独立的图鉴收集对象</li>
+<li>玩家在图鉴里收集的是<strong>食材本身</strong>，不是其加工后的熟水形态</li>
+<li>UI上通过图标/名称的强关联让玩家感知"这个食材能做什么熟水"</li>
+</ul>
+<h3 id="_10">食材图鉴规则</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">触发条件</td>
+<td style="text-align: left;">采摘到某种食材即解锁该条目</td>
+</tr>
+<tr>
+<td style="text-align: left;">条目数量</td>
+<td style="text-align: left;">~514种（鲜果~188 + 花卉~163 + 本草~163）</td>
+</tr>
+<tr>
+<td style="text-align: left;">四级稀有度</td>
+<td style="text-align: left;">市井级(~172) / 雅士级(~145) / 贡品级(~110) / 上古传说级(~87)</td>
+</tr>
+<tr>
+<td style="text-align: left;">展示内容</td>
+<td style="text-align: left;">古雅名+俗名 / 产地故事 / 古籍出处（《诗经》《本草纲目》《梦华录》等）/ 食用或药用价值 / 关联诗词 / 助农合作信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">命名原则</td>
+<td style="text-align: left;"><strong>名字引经据典，体现文化自信</strong>：市井级亲切（蜜桃/青杏）、雅士级取古籍原名（玉梨/离支/丹若）、贡品/上古级加入仙境意象（瑶桃/碧霞橙）。功能UI文字全白话，只有食材名本身雅致</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">茶饮/甜品图鉴规则</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">触发条件</td>
+<td style="text-align: left;">使用某张底卡+特定三槽位食材组合完成调制</td>
+</tr>
+<tr>
+<td style="text-align: left;">条目数量上限</td>
+<td style="text-align: left;">取决于探索程度（69张底卡 × N种有效搭配）</td>
+</tr>
+<tr>
+<td style="text-align: left;">稀有度</td>
+<td style="text-align: left;">继承自底卡品级（市井/雅士/贡品/上古传说）</td>
+</tr>
+<tr>
+<td style="text-align: left;">展示内容</td>
+<td style="text-align: left;">成品雅名 + 外观图 + 所用底卡 + 3槽位食材 + 首次调制时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">去重规则</td>
+<td style="text-align: left;">相同底卡 + 相同3槽位 = 同一成品（只记首次）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_12">四、社交公会模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">23</td>
+<td>组织框架</td>
+<td style="text-align: left;">公会框架：大厅，荣誉墙，公会建设</td>
+<td style="text-align: left;"><strong>茶行框架</strong>：雅堂、荣耀匾额、茶行建设（招牌、厅堂、灶间、库房逐步扩建）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">24</td>
+<td>新人扶持</td>
+<td style="text-align: left;">鲜花分享：老带新</td>
+<td style="text-align: left;"><strong>食材馈赠</strong>：老掌柜送新人珍稀食材，师徒相携</td>
+<td style="text-align: left;">更有温度</td>
+</tr>
+<tr>
+<td style="text-align: center;">25</td>
+<td>公共生产</td>
+<td style="text-align: left;">鲜花种植：额外18个格子，每15分钟一轮</td>
+<td style="text-align: left;"><strong>共同种植</strong>：额外18块田畦，每15分钟一轮</td>
+<td style="text-align: left;">纯文案优化</td>
+</tr>
+<tr>
+<td style="text-align: center;">26</td>
+<td>公会商店</td>
+<td style="text-align: left;">商店：公会资金升级</td>
+<td style="text-align: left;"><strong>行会铺子</strong>：茶行公资升级，等级高出现珍稀食材概率高</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">27</td>
+<td>公会竞赛</td>
+<td style="text-align: left;">公会竞赛：每周一次</td>
+<td style="text-align: left;"><strong>茶行大比</strong>：每旬一届，随机分组较量茶艺</td>
+<td style="text-align: left;">周→旬（宋代计时单位）</td>
+</tr>
+<tr>
+<td style="text-align: center;">28</td>
+<td>辨别机制</td>
+<td style="text-align: left;">后期可根据甲乙丙丁等级判断死掉的公会</td>
+<td style="text-align: left;">凭<strong>声望牌匾</strong>判断茶行兴衰，择优入行</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_13">五、换装模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">29</td>
+<td>模块定位</td>
+<td style="text-align: left;">换装玩法</td>
+<td style="text-align: left;"><strong>妆扮换装</strong>（宋代服饰风：褙子、半臂、裙裾）</td>
+<td style="text-align: left;">明确宋代风格</td>
+</tr>
+<tr>
+<td style="text-align: center;">30</td>
+<td>免费收集线</td>
+<td style="text-align: left;">完成绸缎订单得服装</td>
+<td style="text-align: left;">完成绸缎订单→裁制华服，免费收集线足够深</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">31</td>
+<td>活动获取</td>
+<td style="text-align: left;">活动获得服装</td>
+<td style="text-align: left;">参加<strong>节令活动</strong>得上元灯服、七夕罗裙等节日特色服装</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_14">六、好友模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">32</td>
+<td>好友框架</td>
+<td style="text-align: left;">好友列表、密友、申请、黑名单、微信邀请</td>
+<td style="text-align: left;"><strong>相识列表、知己、递帖相邀、拒往来、微信邀请</strong></td>
+<td style="text-align: left;">"申请"→"递帖相邀"（宋代礼仪）</td>
+</tr>
+<tr>
+<td style="text-align: center;">33</td>
+<td>交互行为</td>
+<td style="text-align: left;">访问、偷花</td>
+<td style="text-align: left;"><strong>串门、借摘</strong>：借摘好友已成熟的果实</td>
+<td style="text-align: left;">"偷花"→"借摘"，攻击性变互助</td>
+</tr>
+<tr>
+<td style="text-align: center;">34</td>
+<td>邀请奖励</td>
+<td style="text-align: left;">邀请新用户得真实花束</td>
+<td style="text-align: left;">邀请新客得<strong>助农实物礼包</strong>（游戏内种植达标后触发真实水果寄送——「种什么得什么」）</td>
+<td style="text-align: left;">花束→助农实物赠送</td>
+</tr>
+<tr>
+<td style="text-align: center;">35</td>
+<td>礼物互赠</td>
+<td style="text-align: left;">好友礼物</td>
+<td style="text-align: left;"><strong>好友馈礼</strong>：赠礼给好友，礼尚往来</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_15">七、聊天模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">36</td>
+<td>私聊</td>
+<td style="text-align: left;">好友私聊</td>
+<td style="text-align: left;"><strong>私叙</strong>（宋式信笺样式）</td>
+<td style="text-align: left;">UI可用信笺风</td>
+</tr>
+<tr>
+<td style="text-align: center;">37</td>
+<td>全服频道</td>
+<td style="text-align: left;">全服聊天</td>
+<td style="text-align: left;"><strong>全城茶话</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">38</td>
+<td>公会频道</td>
+<td style="text-align: left;">公会聊天</td>
+<td style="text-align: left;"><strong>茶行内谈</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_16">八、玩法活动模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">子类</th>
+<th style="text-align: center;">活动周期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">单人周期活动</td>
+<td style="text-align: center;">每周一轮</td>
+</tr>
+<tr>
+<td style="text-align: left;">小玩法冲榜</td>
+<td style="text-align: center;">每周一轮</td>
+</tr>
+<tr>
+<td style="text-align: left;">多人冲榜</td>
+<td style="text-align: center;">每周一轮</td>
+</tr>
+</tbody>
+</table>
+<h3 id="81">8.1 单人周期活动</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">39</td>
+<td>代币活动A</td>
+<td style="text-align: left;"><strong>花签集芳</strong>：完成任务得代币换新花</td>
+<td style="text-align: left;"><strong>茶签集珍</strong>：完成日常得茶令，攒够了换新食材/配方</td>
+<td style="text-align: left;">花签→茶令</td>
+</tr>
+<tr>
+<td style="text-align: center;">40</td>
+<td>代币活动B</td>
+<td style="text-align: left;"><strong>碎玉成瓶</strong>：完成行为得代币换新花瓶</td>
+<td style="text-align: left;"><strong>碎玉成器</strong>：完成指定行为得玉片，攒够换新茶具/食材</td>
+<td style="text-align: left;">碎玉成瓶→碎玉成器</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82">8.2 小玩法冲榜</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">41</td>
+<td>拼图游戏</td>
+<td style="text-align: left;">2048</td>
+<td style="text-align: left;"><strong>茶盘合璧</strong>（2048变体）</td>
+<td style="text-align: left;">⚠️ 与茶主题关联弱，建议后期改为<strong>茶百戏mini-game</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">42</td>
+<td>消除游戏</td>
+<td style="text-align: left;">消除……</td>
+<td style="text-align: left;"><strong>瓜果消消乐</strong>：水果消除合成稀有食材</td>
+<td style="text-align: left;">作为附属休闲玩法接受</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83">8.3 多人冲榜</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">43</td>
+<td>公会竞赛</td>
+<td style="text-align: left;">公会竞赛</td>
+<td style="text-align: left;"><strong>茶行大比</strong>：各大茶行之间茶艺/产量/销售额三维较量</td>
+<td style="text-align: left;">从单一产量升级为三维综合</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_17">九、商业化模块</h2>
+<h3 id="91">9.1 核心付费</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">44</td>
+<td>会员体系</td>
+<td style="text-align: left;">VIP</td>
+<td style="text-align: left;"><strong>掌柜令牌</strong>：解锁便捷功能，增加收益</td>
+<td style="text-align: left;">VIP→掌柜令牌</td>
+</tr>
+<tr>
+<td style="text-align: center;">45</td>
+<td>广告特权</td>
+<td style="text-align: left;">免广告</td>
+<td style="text-align: left;"><strong>免看广告</strong>：安心种地不受打扰</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">46</td>
+<td>累充奖励</td>
+<td style="text-align: left;">累充奖励：历史累充越多奖励鲜花</td>
+<td style="text-align: left;"><strong>累投回礼</strong>：投入越多，奖励越好的食材或限定配方</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="92">9.2 礼包体系</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">类型</th>
+<th style="text-align: left;">说明</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>常驻归档</strong></td>
+<td style="text-align: left;">历史礼包</td>
+<td style="text-align: left;">礼包花圃</td>
+<td style="text-align: left;"><strong>礼包果园</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>基金</strong></td>
+<td style="text-align: left;">入门养成</td>
+<td style="text-align: left;">元宝基金</td>
+<td style="text-align: left;"><strong>银两基金</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>时装</strong></td>
+<td style="text-align: left;">定期上新</td>
+<td style="text-align: left;">时装礼包</td>
+<td style="text-align: left;"><strong>霓裳礼包</strong>（宋式服装，四季更衣）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>周限</strong></td>
+<td style="text-align: left;">每周轮换</td>
+<td style="text-align: left;">周期限时鲜花礼包</td>
+<td style="text-align: left;"><strong>周期限时食材礼包</strong>（以应季食材为主题）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>月卡</strong></td>
+<td style="text-align: left;">月度战票</td>
+<td style="text-align: left;">月度花之密令</td>
+<td style="text-align: left;"><strong>月度茶令</strong>（每月解锁一款珍稀配方）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>定价策略</strong>：主力¥6-30（一瓶饮料/一杯奶茶的钱），明码直购不用虚拟币。下沉用户友好。</p>
+</blockquote>
+<h3 id="93">9.3 商城结构</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">47</td>
+<td>主商城</td>
+<td style="text-align: left;">礼包商店</td>
+<td style="text-align: left;"><strong>礼包铺子</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">48</td>
+<td>会员商店</td>
+<td style="text-align: left;">VIP专属花</td>
+<td style="text-align: left;"><strong>掌柜专属铺</strong>：令牌专属食材/茶具</td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">49</td>
+<td>材料商店</td>
+<td style="text-align: left;">材料商店</td>
+<td style="text-align: left;"><strong>材料铺子</strong>（农肥、种苗、配件等）</td>
+<td style="text-align: left;">—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_18">十、灵韵系统（重点改造）</h2>
+<blockquote>
+<p>本模块为改造重点。原花灵系统规则复杂、付费门槛过高。</p>
+</blockquote>
+<h3 id="101">10.1 改造方向</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">原方案（花灵）</th>
+<th style="text-align: left;">新方案（灵韵·食神赐福）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">包装</td>
+<td style="text-align: left;">抽象的"花灵"属性</td>
+<td style="text-align: left;"><strong>食神赐福</strong>——每种食材自带隐藏灵韵属性</td>
+</tr>
+<tr>
+<td style="text-align: left;">规则</td>
+<td style="text-align: left;">复杂属性计算</td>
+<td style="text-align: left;"><strong>极简图标匹配</strong>（4种灵韵图标）</td>
+</tr>
+<tr>
+<td style="text-align: left;">作用</td>
+<td style="text-align: left;">影响品质星级</td>
+<td style="text-align: left;"><strong>纯收集向</strong>：凑同灵韵→解锁成就/称号，<strong>不加成数值</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">付费模式</td>
+<td style="text-align: left;">高门槛约1000元起步</td>
+<td style="text-align: left;"><strong>小额多次</strong>（¥6起步）</td>
+</tr>
+<tr>
+<td style="text-align: left;">学习成本</td>
+<td style="text-align: left;">高（需教程）</td>
+<td style="text-align: left;">低（30秒直觉理解）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关键约束</strong>：本游戏所有成品均无品质档位分级。因此灵韵<strong>不涉及任何数值加成</strong>，纯为收集乐趣服务。</p>
+</blockquote>
+<h3 id="102">10.2 具体方案（图标共鸣·收集版）</h3>
+<pre class="codehilite"><code>┌──────────────────────────────────────────┐
+│            食神赐福 · 灵韵                │
+│                                          │
+│  每种食材自带隐藏「灵韵」属性             │
+│  用4种图标表示：                          │
+│   🔥甘香  💧清冽  🌿清芬  🌸雅韵         │
+│                                          │
+│  收集目标（非数值加成）：                  │
+│  · 同一张底卡使用3个同灵韵食材            │
+│    → 解锁共鸣成就                        │
+│  · 单张底卡集齐4种灵韵的全部组合          │
+│    → 解锁精通称号                         │
+│  · 全服首个完成某类共鸣                   │
+│    → 限时专属称号+茶坊装饰                │
+│                                          │
+│  本质：灵韵 = 额外的收集维度              │
+└──────────────────────────────────────────┘
+</code></pre>
+
+<h3 id="103">10.3 付费点设计</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">层级</th>
+<th style="text-align: center;">价格区间</th>
+<th style="text-align: left;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">免费层</td>
+<td style="text-align: center;">¥0</td>
+<td style="text-align: left;">所有食材有隐藏灵韵，摸索可知；已解锁的永久可见</td>
+</tr>
+<tr>
+<td style="text-align: left;">小额层</td>
+<td style="text-align: center;">¥6-30</td>
+<td style="text-align: left;">灵韵窥镜（查看1种食材灵韵）/ 食神图鉴月卡（显示所有已有食材灵韵）</td>
+</tr>
+<tr>
+<td style="text-align: left;">中额层</td>
+<td style="text-align: center;">¥68-128</td>
+<td style="text-align: left;">珍稀灵韵礼包（含特定灵韵的高价值食材）/ 限定称号装扮</td>
+</tr>
+</tbody>
+</table>
+<p><strong>不存在的模式：</strong>
+- ❌ 无品质加成
+- ❌ 无产出数量加成
+- ❌ 无经验加成
+- ❌ 无底洞式升级养成</p>
+<hr />
+<h2 id="_19">十一、个人展示模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">50</td>
+<td>个人主页</td>
+<td style="text-align: left;">个人主页</td>
+<td style="text-align: left;"><strong>茶坊主页</strong>（展示名号、招牌配方、声望、获奖匾额）</td>
+<td style="text-align: left;">从个人展示变为茶坊展示</td>
+</tr>
+<tr>
+<td style="text-align: center;">51</td>
+<td>活动主页</td>
+<td style="text-align: left;">花展主页</td>
+<td style="text-align: left;"><strong>茶会主页</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">52</td>
+<td>种植排行</td>
+<td style="text-align: left;">（原版无独立排行）</td>
+<td style="text-align: left;"><strong>园丁榜</strong>：谁收集食材最多/种植等级最高/小院最美</td>
+<td style="text-align: left;">⭐ 新增：给纯种植玩家社交出口</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_20">十二、周边工具模块</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th>功能点</th>
+<th style="text-align: left;">原包装</th>
+<th style="text-align: left;">新包装</th>
+<th style="text-align: left;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">53</td>
+<td>系统通知</td>
+<td style="text-align: left;">邮件</td>
+<td style="text-align: left;"><strong>信笺</strong>（宋式书信样式）</td>
+<td style="text-align: left;">可用书法字体渲染</td>
+</tr>
+<tr>
+<td style="text-align: center;">54</td>
+<td>设置页</td>
+<td style="text-align: left;">设置</td>
+<td style="text-align: left;"><strong>掌柜案头</strong>（账房先生整理账册背景）</td>
+<td style="text-align: left;">沉浸感强</td>
+</tr>
+<tr>
+<td style="text-align: center;">55</td>
+<td>好友排行</td>
+<td style="text-align: left;">好友排行</td>
+<td style="text-align: left;"><strong>茶坊声望榜</strong></td>
+<td style="text-align: left;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;">56</td>
+<td>世界排行</td>
+<td style="text-align: left;">世界排行</td>
+<td style="text-align: left;"><strong>天下总榜</strong></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">57</td>
+<td>日常任务</td>
+<td style="text-align: left;">日常任务</td>
+<td style="text-align: left;"><strong>今日茶事</strong>（以当办事账册形式呈现）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">58</td>
+<td>物品栏</td>
+<td style="text-align: left;">背包</td>
+<td style="text-align: left;"><strong>茶箱</strong>（宋式箱笼，分格存放）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">59</td>
+<td>客服</td>
+<td style="text-align: left;">客服</td>
+<td style="text-align: left;"><strong>掌柜答疑</strong>（伙计来报对话形式）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">60</td>
+<td>系统公告</td>
+<td style="text-align: left;">公告</td>
+<td style="text-align: left;"><strong>茶坊告示</strong>（宋代公文告示样式）</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">61</td>
+<td>信息流</td>
+<td style="text-align: left;">跑马灯</td>
+<td style="text-align: left;"><strong>坊间传报</strong>（宋代小报形式）</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a">附录A：待确认事项</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th>系统</th>
+<th style="text-align: center;">待确认内容</th>
+<th style="text-align: left;">优先级</th>
+<th style="text-align: center;">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td>庙会集订</td>
+<td style="text-align: center;">"50息"的时间单位定义？</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td>食材坊市</td>
+<td style="text-align: center;">是否允许成品茶饮交易？（建议仅允许食材交易）</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td>种苗获取渠道</td>
+<td style="text-align: center;">四级稀有度的种苗来源是否需要写死？</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: center;">⏳ 建议✅明确</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td>2048变体</td>
+<td style="text-align: center;">后期是否改为茶百戏mini-game？</td>
+<td style="text-align: left;">P2</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td>换装联动</td>
+<td style="text-align: center;">服装是否与底卡效果联动？</td>
+<td style="text-align: left;">P3</td>
+<td style="text-align: center;">⏳ 可选</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td>精轨订单精度</td>
+<td style="text-align: center;">雅客/宫宴订单是指定具体成品还是指定底卡范围任选？</td>
+<td style="text-align: left;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="b">附录B：系统可行性速查</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th style="text-align: center;">系统</th>
+<th style="text-align: center;">可行性</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: center;">种植</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">直接映射，无问题</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: center;">订单销售（双轨制）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">快轨=一键卖熟水，精轨=底卡调制</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: center;">图鉴（2层并列）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">与花园世界结构完全一致：花卉→食材，花艺→茶饮</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: center;">社交/茶行</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">框架重构，逻辑一致</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: center;">换装</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">天然契合</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: center;">好友</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">全面优化（借摘/递帖）</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: center;">聊天</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">纯文案替换</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align: center;">玩法活动</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">基本可行（2048待定）</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align: center;">商业化</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">整体可行，定价¥6-30下沉友好</td>
+</tr>
+<tr>
+<td>10</td>
+<td style="text-align: center;">灵韵系统</td>
+<td style="text-align: center;">🔄</td>
+<td style="text-align: left;">方案已定（纯收集向），需按新方案重做</td>
+</tr>
+<tr>
+<td>11</td>
+<td style="text-align: center;">个人展示</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">新增园丁榜</td>
+</tr>
+<tr>
+<td>12</td>
+<td style="text-align: center;">周边（9项）</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: left;">全部优秀</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>配套文档：《包装思路文档》《食材命名规范（古雅名体系）》</em></p>
+  </div>
+
+  <div class="footer-nav">
+    <p><a href="index.html">← 返回文档中心</a></p>
+  </div>
+</div>
+</body>
+</html>

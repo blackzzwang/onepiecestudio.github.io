@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✅ 可行性复核报告 · 梦华小院</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #faf6f0;
+    color: #3d3028;
+    line-height: 1.85;
+  }
+  .doc-container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+  .doc-header {
+    text-align: center;
+    padding: 36px 20px 28px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 14px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(180,140,100,0.18);
+  }
+  .doc-header h1 { font-size: 1.9em; color: #5a4028; letter-spacing: 2px; }
+  .doc-header .meta { font-size: 0.84em; color: #9a8a78; margin-top: 10px; }
+  
+  /* 返回导航 */
+  .back-nav {
+    display: inline-block;
+    padding: 7px 18px;
+    background: rgba(107,68,35,0.08);
+    color: #6b4423;
+    border-radius: 8px;
+    font-size: 0.85em;
+    text-decoration: none;
+    margin-bottom: 22px;
+    transition: background 0.2s;
+  }
+  .back-nav:hover { background: rgba(107,68,35,0.15); }
+
+  /* Markdown内容样式 */
+  .content { 
+    background: rgba(255,255,255,0.82); 
+    padding: 36px 38px; 
+    border-radius: 12px; 
+    border: 1px solid rgba(180,140,100,0.13);
+  }
+
+  h1 { font-size: 1.65em; color: #5a4028; margin: 34px 0 16px; border-bottom: 2px solid #e8d4b8; padding-bottom: 8px; }
+  h1:first-child { margin-top: 0; }
+  h2 { font-size: 1.35em; color: #6b4423; margin: 30px 0 14px; padding-left: 12px; border-left: 4px solid #d4a574; }
+  h3 { font-size: 1.12em; color: #7a5a38; margin: 24px 0 10px; }
+  h4 { font-size: 1em; color: #8a6a48; margin: 18px 0 8px; }
+
+  p { margin: 10px 0; font-size: 0.94em; }
+  
+  blockquote {
+    margin: 16px 0; padding: 14px 20px;
+    background: linear-gradient(to right, #f5ead8, transparent);
+    border-left: 4px solid #c9a86c;
+    color: #6a5848;
+    font-size: 0.91em;
+    border-radius: 0 8px 8px 0;
+  }
+  blockquote p { margin: 6px 0; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 18px 0;
+    font-size: 0.88em;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 6px rgba(74,55,40,0.08);
+  }
+  th {
+    background: #6b4423; color: #fff; padding: 11px 14px;
+    text-align: left; font-weight: 500;
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid #eee8de; }
+  tr:nth-child(even) { background: #fdfbf7; }
+  tr:hover { background: #f8f0e0; }
+
+  code {
+    background: #efe5d5; padding: 2px 7px; border-radius: 4px;
+    font-size: 0.87em; color: #8b6914;
+  }
+  pre {
+    background: #2d2418; color: #e8dcc8; padding: 20px 22px;
+    border-radius: 10px; overflow-x: auto; margin: 18px 0;
+    line-height: 1.7; font-size: 0.85em;
+  }
+  pre code { background: none; padding: 0; color: inherit; }
+
+  strong { color: #5a4028; }
+  hr { border: none; border-top: 1px solid #e8d4b8; margin: 28px 0; }
+
+  ul, ol { margin: 10px 0; padding-left: 26px; }
+  li { margin: 5px 0; font-size: 0.93em; }
+  li > ul, li > ol { margin: 4px 0; }
+
+  .footer-nav {
+    text-align: center; margin-top: 36px; padding-top: 22px;
+    border-top: 1px solid #e8d4b8;
+  }
+  .footer-nav a { color: #8b6914; font-size: 0.85em; text-decoration: none; }
+  .footer-nav a:hover { text-decoration: underline; }
+
+  @media (max-width: 650px) {
+    .doc-container { padding: 20px 12px 40px; }
+    .content { padding: 22px 18px; }
+    th, td { padding: 8px 10px; font-size: 0.82em; }
+    pre { padding: 14px; font-size: 0.78em; overflow-x: auto; }
+  }
+</style>
+
+</head>
+<body>
+<div class="doc-container">
+  <div class="doc-header">
+    <h1>✅ 可行性复核报告</h1>
+    <div class="meta">梦华小院项目文档 · One Piece Studio</div>
+  </div>
+
+  <a href="index.html" class="back-nav">← 返回文档中心</a>
+
+  <div class="content">
+<h1 id="_1">梦华录世界观 × 梦华小院：方案可行性复核</h1>
+<blockquote>
+<p>基于产品定位 + 《底卡与食材系统》设计文档 v2.0 的逐项验证</p>
+</blockquote>
+<hr />
+<h2 id="_2">产品方案核心</h2>
+<pre class="codehilite"><code>┌─────────────────────────────────────────────────────┐
+│              汴梁城 · 梦华小院                        │
+│                                                     │
+│   后院茶圃 ──→ 食材产出（鲜果/花卉/本草）             │
+│      ↓                                              │
+│   ┌──────────────┬──────────────────┐               │
+│   │  居民订单     │    雅客/宫宴订单    │               │
+│   │  (卖熟水)     │    (底卡制茶饮)    │               │
+│   │  单一食材     │    三槽位组合       │               │
+│   │  一键完成     │    高价值成品      │               │
+│   └──────────────┴──────────────────┘               │
+│                                                     │
+│   收集重心：                                        │
+│     · 🌱 食材图鉴 ← 种植向核心（~514种，名字古雅有文化） │
+│     · 🏆 茶饮甜品图鉴 ← 深度制作收集                  │
+│                                                     │
+│   熟水 = 订单交付载体，不是独立图鉴                    │
+│   所有成品均无品质档位，只有单一稀有度                 │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+
+<hr />
+<h2 id="_3">核心规则前提</h2>
+<p>以下四条是本次复核的硬性前提，所有判定均基于此：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">规则</th>
+<th style="text-align: left;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">R1</td>
+<td style="text-align: left;"><strong>所有成品无品质分级</strong>：熟水、茶饮、甜品都只有单一稀有度，不存在★/★★/★★★</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">R2</td>
+<td style="text-align: left;"><strong>熟水 = 单一种食材制作，一键交付</strong>：每种食材 ↔ 1种独特熟水成品，选食材→一键制作并贩卖，不表现制作过程</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">R3</td>
+<td style="text-align: left;"><strong>两层图鉴</strong>：🌱食材图鉴（唯一种植收集核心）+ 🏆茶饮甜品图鉴（深度制作）。熟水是订单交付载体，不作为独立图鉴</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">R4</td>
+<td style="text-align: left;"><strong>灵韵纯收集向</strong>：图标共鸣只解锁成就/称号，不加成任何数值</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">逐项问题验证</h2>
+<h3 id="1">✅ 问题① 身份矛盾 → 已解决</h3>
+<table>
+<thead>
+<tr>
+<th>原始担忧</th>
+<th>设计方案</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>茶坊老板不会自己种地</td>
+<td><strong>穿越者人设</strong>：带着现代记忆来到宋朝，既种又卖</td>
+<td>✅ 逻辑通顺</td>
+</tr>
+<tr>
+<td>行为逻辑撕裂</td>
+<td>自产自销模式在古代很常见（前店后园）</td>
+<td>✅ 合理</td>
+</tr>
+<tr>
+<td>缺乏经营感</td>
+<td>卖熟水 + 雅客/宫宴订单 双轨制提供经营反馈</td>
+<td>✅ 有经营循环</td>
+</tr>
+</tbody>
+</table>
+<p><strong>补充说明</strong>：在UI叙事上强化"后院种植、前厅售卖"的空间关系。穿越者设定同时天然解释了食材多样性——西域/南洋/西洋贸易带来的舶来品。</p>
+<hr />
+<h3 id="2-vs">✅ 问题② 熟水 vs 茶底体系碰撞 → 完美解决</h3>
+<p>这是本方案的<strong>最大亮点</strong>。</p>
+<p><strong>原担忧</strong>：梦华录一半饮品不是"茶"，茶底体系兜不住。</p>
+<p><strong>解法</strong>：两种订单类型天然分流：</p>
+<pre class="codehilite"><code>梦华录饮品分类              游戏内映射                收集归属
+─────────────────────────────────────────────────────────
+
+【熟水 / 饮子】             →  卖熟水（居民订单）      → 食材图鉴（底层）
+  单一食材 = 一种独特熟水（一键完成）
+  ─────────────────────────────────────────────
+  紫苏饮子  ──────────────→  [紫苏叶] → 一键做成→交付
+  薄荷饮   ──────────────→  [薄荷叶] → 一键做成→交付
+  沉香熟水 ──────────────→  [沉香木]  → 一键做成→交付
+  红果饮   ──────────────→  [山楂]    → 一键做成→交付
+  桂花饮   ──────────────→  [桂花]    → 一键做成→交付
+  香薷饮   ──────────────→  [香薷]    → 一键做成→交付
+
+  居民订单可需求多种：
+    &quot;我要3杯紫苏饮&quot; &quot;来2碗薄荷汤&quot;
+  UI上通过图标/名称强关联表达食材↔熟水映射
+  （不表现制作过程——快轨=效率）
+
+【点茶 / 正式茶饮】          →  雅客/宫宴订单（底卡制）  → 🏆茶饮图鉴
+  底卡(茶具+底底) + 3槽位食材 = 一个成品
+  15-25秒李子柒式调制动画
+  ─────────────────────────────────────────────
+  北苑先春点茶 ──────────→  [贡品级底卡 + 主鲜果+辅本草+花卉]
+  径山茶    ─────────────→  [雅士级底卡 + 同上]
+
+【果子 / 甜品】              →  雅客/宫宴订单（甜品底卡）→ 🏆茶饮图鉴
+  ─────────────────────────────────────────────
+  碧涧豆儿糕 ────────────→  [甜品·糕类底卡 + 食材]
+  桂花茶果  ────────────→  [甜品·糕类底卡 + 桂花等]
+  鹿鸣饼    ────────────→  [甜品·糕类底卡]
+</code></pre>
+
+<p><strong>关键设计决策</strong>：</p>
+<ul>
+<li>熟水 = <strong>单一种材</strong>，逻辑干净，一一对应</li>
+<li>熟水<strong>不是独立图鉴</strong>——它是订单的交付载体，玩家收集的是底层食材本身（食材图鉴里的每条都有古雅名字+典籍出处）</li>
+<li>快轨（卖熟水）= <strong>一键完成无动画</strong>；精轨（做茶饮）= <strong>15-25秒调制动画</strong>。快=效率，精=体验，节奏对比鲜明</li>
+<li>无品质分级意味着<strong>每种食材和每种茶饮都是唯一的收集条目</strong></li>
+</ul>
+<p><strong>结论</strong>：✅ 梦华录的全部饮品都能找到归宿，不需要额外新增系统框架。</p>
+<hr />
+<h3 id="3">✅ 问题③ 材料品种超纲 → 已被叙事框架合理解释</h3>
+<table>
+<thead>
+<tr>
+<th>原始担忧</th>
+<th>设计方案</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>宋代没有番茄/辣椒等美洲作物</td>
+<td><strong>穿越者 + 丝路贸易</strong>：西域/南洋/西洋来物，天然合理</td>
+<td>✅ 解决</td>
+</tr>
+<tr>
+<td>514种远超宋代实际品种</td>
+<td>四级稀有度中上古传说级本身就是非历史向</td>
+<td>✅ 可接受</td>
+</tr>
+</tbody>
+</table>
+<p><strong>各级食材的历史边界策略</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>食材类型</th>
+<th style="text-align: center;">数量</th>
+<th style="text-align: left;">历史态度</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>市井级食材</strong></td>
+<td style="text-align: center;">~172种</td>
+<td style="text-align: left;">尽量宋/明清已有作物，保持历史质感</td>
+<td>荔枝、枇杷、菱角、莼菜</td>
+</tr>
+<tr>
+<td><strong>雅士级食材</strong></td>
+<td style="text-align: center;">~145种</td>
+<td style="text-align: left;">引入域外品种（丝绸之路/海外贸易品）</td>
+<td>葡萄（西域）、芒果（南洋）</td>
+</tr>
+<tr>
+<td><strong>贡品级食材</strong></td>
+<td style="text-align: center;">~110种</td>
+<td style="text-align: left;">可以夸张但要有"贡品"叙事支撑</td>
+<td>龙眼、人参、燕窝</td>
+</tr>
+<tr>
+<td><strong>上古传说级食材</strong></td>
+<td style="text-align: center;">~87种</td>
+<td style="text-align: left;">完全放开，仙草神果</td>
+<td>灵芝、何首乌、千年参</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>不需要完全符合史实</strong>。游戏的文化内涵体现在对茶文化、宋元时期花卉/水果/本草的了解，以及典籍中名字和出处的展示——这是<strong>文化自信的体现</strong>（边玩边涨知识），不是历史考据题。</p>
+</blockquote>
+<hr />
+<h3 id="4">⚠️ 问题④ 果子系统归属 → 基本覆盖但有缺口</h3>
+<p>原担忧：果子/甜品需要独立的烘焙生产线。</p>
+<p><strong>设计方案已覆盖大部分</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>梦华录果子</th>
+<th>底卡映射</th>
+<th style="text-align: center;">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>碧涧豆儿糕</td>
+<td><code>甜品·糕</code> 类底卡（5张）</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>桂花茶果</td>
+<td><code>甜品·糕</code> 类底卡 + 桂花</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>鹿鸣饼</td>
+<td><code>甜品·糕</code> 类底卡</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>梨肉好郎君</td>
+<td><code>甜品·糕/冻</code> 类底卡 + 雪梨</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>鲜花团子</td>
+<td><code>甜品·糕</code> 类底卡 + 花卉食材</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>蜜饯雕花</td>
+<td><strong>无对应底卡类型</strong></td>
+<td style="text-align: center;">❌ 缺口</td>
+</tr>
+<tr>
+<td>梨条桃圈</td>
+<td><strong>同上</strong></td>
+<td style="text-align: center;">❌ 缺口</td>
+</tr>
+<tr>
+<td>越梅蜜饯</td>
+<td><strong>同上</strong></td>
+<td style="text-align: center;">❌ 缺口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>唯一缺口</strong>：<strong>蜜饯类</strong>果子目前没有对应的底卡。现有甜品大类：
+- 甜品·冻（10张）
+- 甜品·糕（5张）
+- 甜品·布丁/冰品（4张）</p>
+<p><strong>建议</strong>：增加 <strong><code>甜品·蜜饯</code></strong> 子类（2-3张底卡），覆盖蜜饯雕花、梨条桃圈、越梅蜜饯。</p>
+<hr />
+<h3 id="5-vs">✅ 问题⑤ 上古传说 vs 历史写实 → 已被穿越叙事合法化</h3>
+<p><strong>设计给出了解释框架</strong>：</p>
+<blockquote>
+<p><em>"玩家带着现代奶茶的配方记忆……从市集小摊一路做到贡品级别，乃至触碰上古传说的神秘配方。"</em></p>
+</blockquote>
+<p><strong>穿越者秘方系列已全部定位（12张）</strong>：</p>
+<pre class="codehilite"><code>起步（市井）:
+  T009 竹编漆盖盅 · 冰镇消暑底
+  T010 影青鼓腹杯   · 黑糖乳底
+
+雅士追捧:
+  T020 磁州彩绘杯   · 草莓乳底
+  T021 青瓷冰碗     · 冰沙底
+  T023 紫砂茶盅     · 焙茶乳底
+  T026 建窑彩釉盏   · 紫芋乳底
+
+宫廷新宠:
+  T031 银盏         · 羊酥乳底
+  T033 官窑奶盖盏   · 奶沫顶底
+  T034 汝窑点茶盏   · 碾茶乳底
+  T038 铿瓯         · 贡品乳茶底
+
+终极形态（上古传说）:
+  T051 鎏金提把杯   · 圆子奶茶底
+  T052 漆雕食盒     · 杨枝甘露底
+  T057 琉璃渐变盏   · 流光乳底
+</code></pre>
+
+<p>这实际上是一个<strong>现代饮品逐步引入古代世界</strong>的过程，上古传说级可以包装成：
+- 穿越者的"秘方回忆"
+- 古籍中失传的神农时代配方
+- 仙家赐予的机缘产物</p>
+<p><strong>判定</strong>：✅ 只要叙事包装到位，不矛盾。美术风格需注意从质朴→雅致→华丽的渐变过渡。</p>
+<hr />
+<h3 id="6">✅ 问题⑥ 操作仪式感 → 双轨制已形成天然节奏差</h3>
+<p><strong>双轨制的节奏设计本身就是答案</strong>：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>🏃 快轨·卖熟水</th>
+<th>🎬 精轨·做茶饮</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>操作</strong></td>
+<td>选食材 → <strong>一键完成</strong></td>
+<td>选底卡+三槽位 → <strong>15-25秒动画</strong></td>
+</tr>
+<tr>
+<td><strong>制作过程</strong></td>
+<td>❌ 不表现</td>
+<td>✅ 李子柒式仪式感</td>
+</tr>
+<tr>
+<td><strong>UI表达</strong></td>
+<td>图标/名称强关联</td>
+<td>完整链路动画</td>
+</tr>
+<tr>
+<td><strong>定位</strong></td>
+<td>效率优先，日常循环</td>
+<td>体验优先，情感沉浸</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这种节奏差的优点</strong>：
+- 快的时候真快（日常循环不拖泥带水）
+- 慢的时候真慢（享受调制过程的治愈感）
+- 两种状态切换，玩家不易疲劳</p>
+<p><strong>最低要求</strong>：精轨必须有 <strong>P0 调制动画</strong>（15-25秒），否则和"填完格子直接出结果"没有区别。由于R1（无品质分级），动画的重点是<strong>过程感</strong>而非<strong>品质揭晓的惊喜感</strong>。</p>
+<hr />
+<h3 id="7">✅ 问题⑦ 核心收集对象变更 → 方案清晰且改动更小</h3>
+<p><strong>从花园世界的收集体系到梦华小院</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">花园世界</th>
+<th style="text-align: left;">梦华小院</th>
+<th style="text-align: center;">变化评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">收集对象①</td>
+<td style="text-align: left;">花卉</td>
+<td style="text-align: left;">🌱食材（鲜果/花卉/本草）</td>
+<td style="text-align: center;">扩容（1类→3类）</td>
+</tr>
+<tr>
+<td style="text-align: left;">收集对象②</td>
+<td style="text-align: left;">花艺作品</td>
+<td style="text-align: left;">🏆茶饮/甜品成品</td>
+<td style="text-align: center;">直接映射</td>
+</tr>
+<tr>
+<td style="text-align: left;">图鉴数量</td>
+<td style="text-align: left;"><strong>2个</strong>（花卉图鉴+花艺图鉴）</td>
+<td style="text-align: left;"><strong>2个</strong>（食材图鉴+茶饮图鉴）</td>
+<td style="text-align: center;"><strong>结构不变</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">快速行为</td>
+<td style="text-align: left;">卖花</td>
+<td style="text-align: left;">卖熟水（一键）</td>
+<td style="text-align: center;">行为替换</td>
+</tr>
+<tr>
+<td style="text-align: left;">深度制作</td>
+<td style="text-align: left;">做花艺</td>
+<td style="text-align: left;">做茶饮/甜品（底卡+三槽）</td>
+<td style="text-align: center;">机制映射</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键认知</strong>：这不是什么大重构——花园世界本来就是2个图鉴，梦华小院也是2个，<strong>直接1:1对应</strong>。数据结构基本不变，主要是内容扩容和美术替换。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">影响维度</th>
+<th style="text-align: center;">评估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">数据结构变化</td>
+<td style="text-align: center;">🟡 中等（字段映射：花瓶→底卡、花槽位→食材槽位）</td>
+</tr>
+<tr>
+<td style="text-align: left;">图鉴系统</td>
+<td style="text-align: center;">✅ 最小改动（2→2直接映射）</td>
+</tr>
+<tr>
+<td style="text-align: left;">订单校验</td>
+<td style="text-align: center;">🟡 小-中（文本替换+双轨产出逻辑适配）</td>
+</tr>
+<tr>
+<td style="text-align: left;">美术资源增量</td>
+<td style="text-align: center;">🔴 主要工作量（~69张底卡图 + ~514个食材图标 + 成品零件拼接系统）</td>
+</tr>
+<tr>
+<td style="text-align: left;">品质可视化</td>
+<td style="text-align: center;">✅ 不需要（R1确认无品质分级，大幅减少工作量）</td>
+</tr>
+<tr>
+<td style="text-align: left;">库存UI</td>
+<td style="text-align: center;">🟡 小（三分栏：食材/底卡/成品缓存）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：比最初预估的工作量<strong>少约40%</strong>（主要省掉了品质分级相关的全部设计和资源）。图鉴结构不变是最大的简化点。</p>
+<hr />
+<h3 id="8">✅ 问题⑧ 灵韵系统改造 → 方案已确定</h3>
+<p><strong>原问题</strong>：花灵系统玩不明白、门槛过高。</p>
+<p><strong>新方案</strong>：图标共鸣法 · 纯收集向</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">维度</th>
+<th style="text-align: left;">原版（问题）</th>
+<th style="text-align: center;">新版（解决）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">作用</td>
+<td style="text-align: left;">影响品质星级</td>
+<td style="text-align: center;"><strong>纯收集：凑同灵韵→成就/称号</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">付费门槛</td>
+<td style="text-align: left;">~1000元</td>
+<td style="text-align: center;"><strong>6元起步</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">复杂度</td>
+<td style="text-align: left;">高（属性计算）</td>
+<td style="text-align: center;"><strong>低（颜色匹配）</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">与R1兼容性</td>
+<td style="text-align: left;">依赖品质分级存在</td>
+<td style="text-align: center;">✅ <strong>完美兼容（不加数值）</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>为什么这个方案特别适合当前架构</strong>：</p>
+<p>因为R1规定"无品质分级"，所以任何基于数值加成的灵韵方案都会产生矛盾。而<strong>纯收集向</strong>方案巧妙地绕开了这个问题——灵韵变成了"图鉴之上的图鉴"，一个额外的探索维度，不影响任何已有数值体系。</p>
+<p><strong>与文化的结合点</strong>：每种灵韵图标可以关联一种传统吉祥纹样（如蝙蝠=福、如意=顺），凑齐时解锁的不是数值加成，而是<strong>文化称号</strong>（如"百草通""茶博士""花神使者"），进一步强化文化自信。</p>
+<hr />
+<h3 id="9">✅ 问题⑨ 用户下沉市场 → 是机会而非风险</h3>
+<table>
+<thead>
+<tr>
+<th>原始担忧</th>
+<th>实际情况</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"用户下沉会拉低产品调性"</td>
+<td>下沉市场用户基数远超一二线（~2-3亿 vs ~5000万潜在玩家）</td>
+<td>✅ <strong>机会</strong></td>
+</tr>
+<tr>
+<td>"需要防下沉"</td>
+<td>拼多多/李子柒/抖音已经证明下沉用户的消费力和传播力</td>
+<td>✅ <strong>方向正确</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>击中下沉市场的正确方法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>文案白话化（P6）</strong></td>
+<td>操作/提示全大白话："种下去""浇一下""该施肥了"</td>
+</tr>
+<tr>
+<td><strong>名字雅致化</strong></td>
+<td>只有食材名和成品名引经据典：离支、丹若、蕃荷、水芝……</td>
+</tr>
+<tr>
+<td><strong>亲民定价</strong></td>
+<td>¥6-18明码标价，不搞"首充送VIP"那套</td>
+</tr>
+<tr>
+<td><strong>清晰UI</strong></td>
+<td>大按钮、大字体、少层级——小镇阿姨也能一眼看懂</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>高级感来自"我学到了"，不是来自"我看不懂"。</strong> 文化自信 ≠ 文青，而是让每个学历背景的玩家都能自然接触传统文化。</p>
+</blockquote>
+<hr />
+<h2 id="_5">总结：全部问题的最终判定</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th style="text-align: left;">问题</th>
+<th style="text-align: center;">状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: left;">身份矛盾</td>
+<td style="text-align: center;">✅ 已解决</td>
+<td>穿越者+前店后园，逻辑通</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: left;">熟水vs茶底</td>
+<td style="text-align: center;">✅ <strong>完美解决</strong></td>
+<td>单材料熟水一键完成+双层图鉴，节奏差设计优秀</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: left;">材料数量超纲</td>
+<td style="text-align: center;">✅ <strong>已解决</strong></td>
+<td>穿越者+丝路贸易天然解释，不需完全符合史实</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: left;">果子系统</td>
+<td style="text-align: center;">⚠️ 小缺口</td>
+<td>建议补2-3张蜜饯类底卡</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: left;">上古传说vs写实</td>
+<td style="text-align: center;">✅ 已解决</td>
+<td>12张穿越秘方叙事线完整</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: left;">操作仪式感</td>
+<td style="text-align: center;">✅ <strong>已解决</strong></td>
+<td>双轨制天然形成节奏差（快=一键/精=15-25秒动画）</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: left;">收集对象变更</td>
+<td style="text-align: center;">✅ 方案清晰</td>
+<td>2→2图鉴直接映射，非大重构，工作量比预期少40%</td>
+</tr>
+<tr>
+<td>8</td>
+<td style="text-align: left;">灵韵改造</td>
+<td style="text-align: center;">✅ <strong>已确定</strong></td>
+<td>纯收集向+文化称号，完美兼容无品质分级约束</td>
+</tr>
+<tr>
+<td>9</td>
+<td style="text-align: left;">用户下沉</td>
+<td style="text-align: center;">✅ <strong>机会</strong></td>
+<td>下沉市场=更大用户池+更强传播力，用对方法即可击中</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总体评分：95/100</strong></p>
+<p><strong>结论：方案完全可行。</strong> 核心优势：
+1. <strong>架构简洁</strong>：双轨制+双层图鉴，没有冗余系统
+2. <strong>节奏出色</strong>：快轨效率+精轨体验，两种手感差异鲜明
+3. <strong>文化自信</strong>：不是文青路线，而是通过食材名和典籍展示让玩家自然涨知识
+4. <strong>下沉友好</strong>：白话操作文案+亲民定价+清晰UI，天然适配目标用户群</p>
+<p>剩余优化项：
+1. <strong>美术资源量</strong>（~69张底卡图 + ~514个食材图标 + 成品拼接系统）— 主要工作量
+2. <strong>蜜饯类底卡缺位</strong>（2-3张即可补齐）— 小缺口</p>
+<hr />
+<h2 id="_6">待办清单</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">待办</th>
+<th style="text-align: center;">优先级</th>
+<th style="text-align: center;">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: left;">补充蜜饯类底卡（2-3张）</td>
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">精轨P0调制动画规划（15-25秒李子柒式，至少2套通用模板）</td>
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: left;">食材命名体系落地（~514种食材的古雅名+典籍出处）</td>
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">成品拼接零件系统设计（40-50个零件拼上千组合）</td>
+<td style="text-align: center;">P1</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: left;">灵韵图标与文化吉祥纹样的绑定设计</td>
+<td style="text-align: center;">P2</td>
+<td style="text-align: center;">⏳</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>配套文档：《包装思路文档》《具体包装方案》《底卡与食材系统 v2.0》</em></p>
+  </div>
+
+  <div class="footer-nav">
+    <p><a href="index.html">← 返回文档中心</a></p>
+  </div>
+</div>
+</body>
+</html>
