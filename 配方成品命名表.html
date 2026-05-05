@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>梦华小院 · 配方成品命名表</title>
+<style>
+  :root {
+    --bg: #1a1510; --card-bg: #2a2218; --border: #3d3428;
+    --text: #e8dcc8; --text-dim: #a0937e; --accent: #c8a96e;
+    --n-color: #8bc34a; --r-color: #42a5f5; --sr-color: #ab47bc;
+    --ssr-color: #ff9800; --ur-color: #ff5252;
+    --tier-shi: #a0937e; --tier-ya: #7ec8e3; --tier-gong: #ffd700;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+    background: var(--bg); color: var(--text); line-height: 1.7;
+    padding: 2rem; max-width: 1400px; margin: 0 auto;
+  }
+  h1 { text-align: center; font-size: 2rem; color: var(--accent);
+       margin-bottom: 0.5rem; letter-spacing: 0.3em; }
+  .subtitle { text-align: center; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 2rem; }
+  h2 { font-size: 1.3rem; color: var(--accent); border-bottom: 1px solid var(--border);
+       padding-bottom: 0.3rem; margin: 2.5rem 0 1rem;
+       display: flex; align-items: center; gap: 0.5rem; }
+  h2 .tag { font-size: 0.75rem; padding: 2px 8px; border-radius: 3px;
+             color: #fff; font-weight: normal; }
+  h2 .tag.shi { background: var(--tier-shi); }
+  h2 .tag.ya { background: var(--tier-ya); color: #1a1510; }
+  h2 .tag.gong { background: var(--tier-gong); color: #1a1510; }
+  h3 { font-size: 1rem; color: var(--text-dim); margin: 1.5rem 0 0.8rem;
+       display: flex; align-items: center; gap: 0.5rem; }
+  .rb { display: inline-block; font-size: 0.7rem; padding: 1px 6px;
+        border-radius: 2px; color: #fff; font-weight: bold; font-family: monospace; }
+  .rb.N { background: var(--n-color); color: #1a1510; }
+  .rb.R { background: var(--r-color); }
+  .rb.SR { background: var(--sr-color); }
+  .rb.SSR { background: var(--ssr-color); color: #1a1510; }
+  .rb.UR { background: var(--ur-color); }
+  .locked-tag { font-size: 0.65rem; background: #555; color: #aaa; padding: 1px 5px; border-radius: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-bottom: 1rem; }
+  th { background: var(--card-bg); color: var(--accent); font-weight: normal;
+       padding: 6px 10px; text-align: left; border-bottom: 2px solid var(--border);
+       white-space: nowrap; }
+  td { padding: 5px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tr:hover { background: rgba(200,169,110,0.05); }
+  .id-cell { font-family: monospace; color: var(--text-dim); font-size: 0.78rem; }
+  .name-cell { font-weight: bold; font-size: 0.92rem; }
+  .product-name { color: #f0c060; font-weight: bold; font-size: 0.95rem; letter-spacing: 0.05em; }
+  .product-name.gong { color: #ffd700; }
+  .product-name.ya { color: #a0d8ef; }
+  .type-cell { color: var(--text-dim); }
+  .ing-list { color: var(--text-dim); font-size: 0.78rem; }
+  .card-info { display: inline-flex; align-items: center; gap: 4px;
+               background: rgba(255,255,255,0.05); padding: 2px 6px;
+               border-radius: 3px; font-size: 0.75rem; margin: 1px 2px; }
+  .card-info .cn { color: var(--text); }
+  .card-info .ci { color: var(--text-dim); font-family: monospace; }
+  .note-section { background: var(--card-bg); border: 1px solid var(--border);
+                  border-radius: 6px; padding: 1.2rem; margin: 2rem 0;
+                  font-size: 0.85rem; line-height: 1.9; }
+  .note-section h3 { margin-top: 0; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                  gap: 1rem; margin-bottom: 2rem; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--border);
+                  border-radius: 6px; padding: 1rem; text-align: center; }
+  .summary-card .num { font-size: 1.8rem; color: var(--accent); font-weight: bold; }
+  .summary-card .label { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.2rem; }
+  .card-header { display: flex; align-items: center; gap: 1rem; margin: 1rem 0 0.5rem;
+                 padding: 0.8rem 1rem; background: var(--card-bg);
+                 border: 1px solid var(--border); border-radius: 6px; }
+  .card-header .ch-name { font-size: 1.1rem; color: var(--accent); font-weight: bold; }
+  .card-header .ch-id { font-family: monospace; color: var(--text-dim); font-size: 0.8rem; }
+  .card-header .ch-container { color: var(--text-dim); font-size: 0.8rem; }
+  .card-header .ch-count { color: var(--accent); font-size: 0.85rem; margin-left: auto; }
+  .intro { background: var(--card-bg); border: 1px solid var(--border);
+           border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem;
+           font-size: 0.9rem; line-height: 1.9; }
+  .intro strong { color: var(--accent); }
+  .tab-bar { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab-btn { padding: 6px 16px; border-radius: 20px; border: 1px solid var(--border);
+             background: transparent; color: var(--text-dim); cursor: pointer;
+             font-size: 0.85rem; font-family: inherit; transition: all 0.2s; }
+  .tab-btn:hover, .tab-btn.active { background: var(--accent); color: #1a1510;
+                                    border-color: var(--accent); font-weight: bold; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .old-name { color: var(--text-dim); font-size: 0.8rem; text-decoration: line-through; }
+  .new-name { color: #8bc34a; font-size: 0.82rem; }
+  @media print {
+    body { background: #fff; color: #333; }
+    .tab-bar { display: none; }
+    .section { display: block !important; }
+    table { font-size: 0.72rem; }
+    th { background: #f0ead8; color: #5a4a2a; }
+  }
+</style>
+</head>
+<body>
+
+<h1>梦华小院 · 配方成品命名表</h1>
+<p class="subtitle">122种食材（含限定词修订） / 339个配方 / 喜茶&霸王茶姬风格产品名</p>
+
+<div class="summary-grid">
+  <div class="summary-card"><div class="num">122</div><div class="label">食材总数</div></div>
+  <div class="summary-card"><div class="num">339</div><div class="label">可完成配方</div></div>
+  <div class="summary-card"><div class="num">21</div><div class="label">底卡数量</div></div>
+  <div class="summary-card"><div class="num">339</div><div class="label">唯一产品名</div></div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="showSection('ing')">食材表</button>
+  <button class="tab-btn" onclick="showSection('name')">命名变更</button>
+  <button class="tab-btn" onclick="showSection('recipe')">配方成品名</button>
+</div>
+
+<div class="intro">
+<strong>命名风格说明：</strong><br>
+① <strong>市井级</strong>（3001-3008）：喜茶风格——满杯/多肉/鲜榨/手打等前缀 + 食材名 + 产品词，亲切接地气<br>
+② <strong>雅士级</strong>（3009-3012/3016-3018/3025）：雅致风格——食材名 + 清/醇/幽等雅致修饰 + 煎茶/茗/酪等词，文人雅趣<br>
+③ <strong>贡品级</strong>（3019-3020/3022-3024）：诗意命名——突出珍稀食材意象，如"仙芝冰酪""洛神丹银酿"<br>
+④ 全部<strong>339个产品名</strong>确保唯一，4-7字，参考喜茶/霸王茶姬的命名节奏<br>
+⑤ 食材增加限定词（如杏→黄杏、梨→雪梨），为后续变种预留命名空间
+</div>
+
+<!-- ==================== 食材表 ==================== -->
+<div id="sec-ing" class="section active">
+<h2>市井常见 · N级食材 <span class="tag shi">60种</span></h2>
+<h3><span class="rb N">N</span> 基础水果（23001-23030）</h3>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23001</td><td class="name-cell">杨梅</td><td class="type-cell">果</td><td>25</td><td>18</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span></td><td></td></tr>
+<tr><td class="id-cell">23002</td><td class="name-cell">草莓</td><td class="type-cell">果</td><td>25</td><td>18</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23003</td><td class="name-cell">樱桃</td><td class="type-cell">果</td><td>25</td><td>18</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23004</td><td class="name-cell">蓝莓</td><td class="type-cell">果</td><td>25</td><td>18</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span></td><td></td></tr>
+<tr><td class="id-cell">23005</td><td class="name-cell">黄杏</td><td class="type-cell">果</td><td>25</td><td>18</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23006</td><td class="name-cell">冰沙西瓜</td><td class="type-cell">果</td><td>34</td><td>24</td><td><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span></td><td></td></tr>
+<tr><td class="id-cell">23007</td><td class="name-cell">甜瓜</td><td class="type-cell">果</td><td>34</td><td>24</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span></td><td></td></tr>
+<tr><td class="id-cell">23008</td><td class="name-cell">雪梨</td><td class="type-cell">果</td><td>34</td><td>24</td><td><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span></td><td></td></tr>
+<tr><td class="id-cell">23009</td><td class="name-cell">蜜桃</td><td class="type-cell">果</td><td>34</td><td>24</td><td><span class="card-info"><span class="cn">冰饮</span> <span class="ci">3002</span></span><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span></td><td></td></tr>
+<tr><td class="id-cell">23010</td><td class="name-cell">玉李</td><td class="type-cell">果</td><td>34</td><td>24</td><td><span class="card-info"><span class="cn">蜜饮</span> <span class="ci">3001</span></span></td><td></td></tr>
+<tr><td class="id-cell">23011</td><td class="name-cell">蜜橘</td><td class="type-cell">果</td><td>42</td><td>29</td><td><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span></td><td></td></tr>
+<tr><td class="id-cell">23012</td><td class="name-cell">香橙</td><td class="type-cell">果</td><td>42</td><td>29</td><td><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span></td><td></td></tr>
+<tr><td class="id-cell">23013</td><td class="name-cell">蜜柚</td><td class="type-cell">果</td><td>42</td><td>29</td><td><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span></td><td></td></tr>
+<tr><td class="id-cell">23014</td><td class="name-cell">金枇杷</td><td class="type-cell">果</td><td>42</td><td>29</td><td><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span></td><td></td></tr>
+<tr><td class="id-cell">23015</td><td class="name-cell">红石榴</td><td class="type-cell">果</td><td>42</td><td>29</td><td><span class="card-info"><span class="cn">糖水</span> <span class="ci">3003</span></span></td><td></td></tr>
+<tr><td class="id-cell">23016</td><td class="name-cell">软柿</td><td class="type-cell">果</td><td>53</td><td>37</td><td><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span></td><td></td></tr>
+<tr><td class="id-cell">23017</td><td class="name-cell">红枣</td><td class="type-cell">果</td><td>56</td><td>39</td><td><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span></td><td></td></tr>
+<tr><td class="id-cell">23018</td><td class="name-cell">野山楂</td><td class="type-cell">果</td><td>59</td><td>41</td><td><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span></td><td></td></tr>
+<tr><td class="id-cell">23019</td><td class="name-cell">荔枝</td><td class="type-cell">果</td><td>62</td><td>43</td><td><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23020</td><td class="name-cell">桂圆</td><td class="type-cell">果</td><td>65</td><td>46</td><td><span class="card-info"><span class="cn">豆乳</span> <span class="ci">3004</span></span></td><td></td></tr>
+<tr><td class="id-cell">23021</td><td class="name-cell">紫葡萄</td><td class="type-cell">果</td><td>67</td><td>47</td><td><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span></td><td></td></tr>
+<tr><td class="id-cell">23022</td><td class="name-cell">紫桑葚</td><td class="type-cell">果</td><td>69</td><td>48</td><td><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span></td><td></td></tr>
+<tr><td class="id-cell">23023</td><td class="name-cell">无花果</td><td class="type-cell">果</td><td>71</td><td>50</td><td><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23024</td><td class="name-cell">蜜柑</td><td class="type-cell">果</td><td>73</td><td>51</td><td><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23025</td><td class="name-cell">金橘</td><td class="type-cell">果</td><td>75</td><td>53</td><td><span class="card-info"><span class="cn">酒酿</span> <span class="ci">3005</span></span><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23026</td><td class="name-cell">纸皮核桃</td><td class="type-cell">果</td><td>77</td><td>54</td><td><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span></td><td></td></tr>
+<tr><td class="id-cell">23027</td><td class="name-cell">油板栗</td><td class="type-cell">果</td><td>79</td><td>55</td><td><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23028</td><td class="name-cell">白莲子</td><td class="type-cell">果</td><td>81</td><td>57</td><td><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span></td><td></td></tr>
+<tr><td class="id-cell">23029</td><td class="name-cell">红菱</td><td class="type-cell">果</td><td>83</td><td>58</td><td><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23030</td><td class="name-cell">脆马蹄</td><td class="type-cell">果</td><td>85</td><td>60</td><td><span class="card-info"><span class="cn">甜汤</span> <span class="ci">3006</span></span></td><td></td></tr>
+</tbody></table>
+<h3><span class="rb N">N</span> 进阶食材（23031-23060）</h3>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23031</td><td class="name-cell">枸杞</td><td class="type-cell">果/草</td><td>87</td><td>61</td><td><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23032</td><td class="name-cell">百合</td><td class="type-cell">草</td><td>89</td><td>62</td><td><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23033</td><td class="name-cell">芡实</td><td class="type-cell">果</td><td>91</td><td>64</td><td><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span></td><td></td></tr>
+<tr><td class="id-cell">23034</td><td class="name-cell">薏仁</td><td class="type-cell">草</td><td>93</td><td>65</td><td><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23035</td><td class="name-cell">山药</td><td class="type-cell">草</td><td>95</td><td>67</td><td><span class="card-info"><span class="cn">擂茶</span> <span class="ci">3007</span></span></td><td></td></tr>
+<tr><td class="id-cell">23036</td><td class="name-cell">脆藕</td><td class="type-cell">果</td><td>97</td><td>68</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span></td><td></td></tr>
+<tr><td class="id-cell">23037</td><td class="name-cell">覆盆子</td><td class="type-cell">果</td><td>99</td><td>69</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span></td><td></td></tr>
+<tr><td class="id-cell">23038</td><td class="name-cell">火棘果</td><td class="type-cell">果</td><td>101</td><td>71</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span></td><td></td></tr>
+<tr><td class="id-cell">23039</td><td class="name-cell">青橄榄</td><td class="type-cell">果</td><td>103</td><td>72</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23040</td><td class="name-cell">金樱子</td><td class="type-cell">果</td><td>105</td><td>74</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span></td><td></td></tr>
+<tr><td class="id-cell">23041</td><td class="name-cell">青梅</td><td class="type-cell">果</td><td>107</td><td>75</td><td><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23042</td><td class="name-cell">乌梅</td><td class="type-cell">果</td><td>109</td><td>76</td><td><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23043</td><td class="name-cell">番木瓜</td><td class="type-cell">果</td><td>111</td><td>78</td><td><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span></td><td></td></tr>
+<tr><td class="id-cell">23044</td><td class="name-cell">榅桲</td><td class="type-cell">果</td><td>113</td><td>79</td><td><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23045</td><td class="name-cell">海棠果</td><td class="type-cell">果</td><td>115</td><td>81</td><td><span class="card-info"><span class="cn">煎茶</span> <span class="ci">3009</span></span><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23046</td><td class="name-cell">沙果</td><td class="type-cell">果</td><td>117</td><td>82</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23047</td><td class="name-cell">林檎</td><td class="type-cell">果</td><td>119</td><td>83</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23048</td><td class="name-cell">白茯苓</td><td class="type-cell">草</td><td>121</td><td>85</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23049</td><td class="name-cell">白果</td><td class="type-cell">果</td><td>123</td><td>86</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23050</td><td class="name-cell">榛子</td><td class="type-cell">果</td><td>125</td><td>88</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span></td><td></td></tr>
+<tr><td class="id-cell">23051</td><td class="name-cell">松子</td><td class="type-cell">果</td><td>127</td><td>89</td><td><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23052</td><td class="name-cell">紫甘蔗</td><td class="type-cell">果</td><td>129</td><td>90</td><td><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23053</td><td class="name-cell">香橼</td><td class="type-cell">果</td><td>131</td><td>92</td><td><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23054</td><td class="name-cell">嫩椰肉</td><td class="type-cell">果</td><td>133</td><td>93</td><td><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23055</td><td class="name-cell">黄皮果</td><td class="type-cell">果</td><td>135</td><td>95</td><td><span class="card-info"><span class="cn">杏仁酪</span> <span class="ci">3011</span></span></td><td></td></tr>
+<tr><td class="id-cell">23056</td><td class="name-cell">猕猴桃</td><td class="type-cell">果</td><td>137</td><td>96</td><td><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23057</td><td class="name-cell">余甘子</td><td class="type-cell">果</td><td>139</td><td>97</td><td><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23058</td><td class="name-cell">星杨桃</td><td class="type-cell">果</td><td>141</td><td>99</td><td><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23059</td><td class="name-cell">刺梨</td><td class="type-cell">果</td><td>143</td><td>100</td><td><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+<tr><td class="id-cell">23060</td><td class="name-cell">芭蕉</td><td class="type-cell">果</td><td>145</td><td>102</td><td><span class="card-info"><span class="cn">露饮</span> <span class="ci">3012</span></span></td><td></td></tr>
+</tbody></table>
+<h2>雅致花卉 · R级食材 <span class="tag" style="background:var(--ur-color)">21种</span></h2>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23067</td><td class="name-cell">茉莉</td><td class="type-cell">花</td><td>70</td><td>49</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span></td><td></td></tr>
+<tr><td class="id-cell">23068</td><td class="name-cell">紫苏</td><td class="type-cell">草</td><td>70</td><td>49</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23069</td><td class="name-cell">玫瑰</td><td class="type-cell">花</td><td>70</td><td>49</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23070</td><td class="name-cell">月季</td><td class="type-cell">花</td><td>70</td><td>49</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23071</td><td class="name-cell">芍药</td><td class="type-cell">花</td><td>70</td><td>49</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23072</td><td class="name-cell">桂花</td><td class="type-cell">花</td><td>100</td><td>70</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23073</td><td class="name-cell">栀子</td><td class="type-cell">花</td><td>100</td><td>70</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23074</td><td class="name-cell">金银花</td><td class="type-cell">花</td><td>115</td><td>97</td><td><span class="card-info"><span class="cn">芝麻糊</span> <span class="ci">3008</span></span></td><td></td></tr>
+<tr><td class="id-cell">23075</td><td class="name-cell">黄菊</td><td class="type-cell">花</td><td>145</td><td>118</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23076</td><td class="name-cell">腊梅</td><td class="type-cell">花</td><td>117</td><td>99</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23077</td><td class="name-cell">白兰</td><td class="type-cell">花</td><td>117</td><td>99</td><td><span class="card-info"><span class="cn">酪饮</span> <span class="ci">3010</span></span><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23084</td><td class="name-cell">素馨</td><td class="type-cell">花</td><td>154</td><td>127</td><td><span class="card-info"><span class="cn">秘方饮</span> <span class="ci">3024</span></span></td><td></td></tr>
+<tr><td class="id-cell">23085</td><td class="name-cell">迎春花</td><td class="type-cell">花</td><td>154</td><td>127</td><td><span class="card-info"><span class="cn">花露</span> <span class="ci">3025</span></span></td><td></td></tr>
+<tr><td class="id-cell">23086</td><td class="name-cell">木槿</td><td class="type-cell">花</td><td>154</td><td>127</td><td><span class="card-info"><span class="cn">花露</span> <span class="ci">3025</span></span></td><td></td></tr>
+<tr><td class="id-cell">23087</td><td class="name-cell">荷花</td><td class="type-cell">花</td><td>148</td><td>124</td><td><span class="card-info"><span class="cn">果酒</span> <span class="ci">3018</span></span></td><td></td></tr>
+<tr><td class="id-cell">23100</td><td class="name-cell">白梅</td><td class="type-cell">花</td><td>95</td><td>67</td><td><span class="card-info"><span class="cn">果酒</span> <span class="ci">3018</span></span></td><td></td></tr>
+<tr><td class="id-cell">23101</td><td class="name-cell">杏花</td><td class="type-cell">花</td><td>95</td><td>67</td><td><span class="card-info"><span class="cn">果酒</span> <span class="ci">3018</span></span></td><td></td></tr>
+<tr><td class="id-cell">23103</td><td class="name-cell">槐花</td><td class="type-cell">花</td><td>173</td><td>146</td><td><span class="card-info"><span class="cn">果酒</span> <span class="ci">3018</span></span></td><td></td></tr>
+<tr><td class="id-cell">23114</td><td class="name-cell">玉兰</td><td class="type-cell">花</td><td>180</td><td>155</td><td><span class="card-info"><span class="cn">荷叶饮</span> <span class="ci">3023</span></span></td><td></td></tr>
+<tr><td class="id-cell">23118</td><td class="name-cell">蔷薇</td><td class="type-cell">花</td><td>184</td><td>159</td><td><span class="card-info"><span class="cn">秘方饮</span> <span class="ci">3024</span></span></td><td></td></tr>
+<tr><td class="id-cell">23122</td><td class="name-cell">艾草</td><td class="type-cell">草</td><td>183</td><td>159</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+</tbody></table>
+<h2>珍稀本草 · SR级食材 <span class="tag" style="background:var(--sr-color)">33种</span></h2>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23066</td><td class="name-cell">虞美人</td><td class="type-cell">花</td><td>147</td><td>123</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23080</td><td class="name-cell">雪莲</td><td class="type-cell">花</td><td>196</td><td>163</td><td><span class="card-info"><span class="cn">酥山</span> <span class="ci">3020</span></span></td><td></td></tr>
+<tr><td class="id-cell">23081</td><td class="name-cell">藏红花</td><td class="type-cell">花</td><td>196</td><td>163</td><td><span class="card-info"><span class="cn">酥山</span> <span class="ci">3020</span></span></td><td></td></tr>
+<tr><td class="id-cell">23082</td><td class="name-cell">洛神花</td><td class="type-cell">花</td><td>241</td><td>197</td><td><span class="card-info"><span class="cn">桂花酿</span> <span class="ci">3022</span></span></td><td></td></tr>
+<tr><td class="id-cell">23083</td><td class="name-cell">金莲花</td><td class="type-cell">花</td><td>241</td><td>197</td><td><span class="card-info"><span class="cn">荷叶饮</span> <span class="ci">3023</span></span></td><td></td></tr>
+<tr><td class="id-cell">23088</td><td class="name-cell">木芙蓉</td><td class="type-cell">花</td><td>256</td><td>210</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23089</td><td class="name-cell">紫藤花</td><td class="type-cell">花</td><td>210</td><td>178</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23090</td><td class="name-cell">凌霄花</td><td class="type-cell">花</td><td>210</td><td>178</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23091</td><td class="name-cell">紫薇花</td><td class="type-cell">花</td><td>258</td><td>212</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23092</td><td class="name-cell">山茶花</td><td class="type-cell">花</td><td>258</td><td>212</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23095</td><td class="name-cell">灵芝</td><td class="type-cell">草</td><td>266</td><td>224</td><td><span class="card-info"><span class="cn">冰酪</span> <span class="ci">3019</span></span></td><td></td></tr>
+<tr><td class="id-cell">23102</td><td class="name-cell">五味子</td><td class="type-cell">草</td><td>145</td><td>109</td><td><span class="card-info"><span class="cn">果酒</span> <span class="ci">3018</span></span></td><td></td></tr>
+<tr><td class="id-cell">23104</td><td class="name-cell">忘忧草</td><td class="type-cell">花</td><td>219</td><td>186</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23105</td><td class="name-cell">合欢花</td><td class="type-cell">花</td><td>284</td><td>235</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23106</td><td class="name-cell">红花</td><td class="type-cell">花</td><td>207</td><td>178</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23107</td><td class="name-cell">金盏花</td><td class="type-cell">花</td><td>207</td><td>178</td><td><span class="card-info"><span class="cn">蜜煎</span> <span class="ci">3016</span></span></td><td></td></tr>
+<tr><td class="id-cell">23108</td><td class="name-cell">胖大海</td><td class="type-cell">草</td><td>222</td><td>189</td><td><span class="card-info"><span class="cn">酥山</span> <span class="ci">3020</span></span></td><td></td></tr>
+<tr><td class="id-cell">23109</td><td class="name-cell">桔梗</td><td class="type-cell">草</td><td>210</td><td>181</td><td><span class="card-info"><span class="cn">酥山</span> <span class="ci">3020</span></span></td><td></td></tr>
+<tr><td class="id-cell">23110</td><td class="name-cell">丹桂</td><td class="type-cell">花</td><td>225</td><td>192</td><td><span class="card-info"><span class="cn">桂花酿</span> <span class="ci">3022</span></span></td><td></td></tr>
+<tr><td class="id-cell">23111</td><td class="name-cell">金桂</td><td class="type-cell">花</td><td>225</td><td>192</td><td><span class="card-info"><span class="cn">桂花酿</span> <span class="ci">3022</span></span></td><td></td></tr>
+<tr><td class="id-cell">23112</td><td class="name-cell">银桂</td><td class="type-cell">花</td><td>225</td><td>192</td><td><span class="card-info"><span class="cn">桂花酿</span> <span class="ci">3022</span></span></td><td></td></tr>
+<tr><td class="id-cell">23113</td><td class="name-cell">四季桂</td><td class="type-cell">花</td><td>225</td><td>192</td><td><span class="card-info"><span class="cn">桂花酿</span> <span class="ci">3022</span></span></td><td></td></tr>
+<tr><td class="id-cell">23115</td><td class="name-cell">辛夷花</td><td class="type-cell">花</td><td>215</td><td>186</td><td><span class="card-info"><span class="cn">荷叶饮</span> <span class="ci">3023</span></span></td><td></td></tr>
+<tr><td class="id-cell">23116</td><td class="name-cell">含笑花</td><td class="type-cell">花</td><td>215</td><td>186</td><td><span class="card-info"><span class="cn">荷叶饮</span> <span class="ci">3023</span></span></td><td></td></tr>
+<tr><td class="id-cell">23117</td><td class="name-cell">瑞香花</td><td class="type-cell">花</td><td>215</td><td>186</td><td><span class="card-info"><span class="cn">荷叶饮</span> <span class="ci">3023</span></span></td><td></td></tr>
+<tr><td class="id-cell">23119</td><td class="name-cell">水仙花</td><td class="type-cell">花</td><td>219</td><td>190</td><td><span class="card-info"><span class="cn">秘方饮</span> <span class="ci">3024</span></span></td><td></td></tr>
+<tr><td class="id-cell">23120</td><td class="name-cell">米兰花</td><td class="type-cell">花</td><td>219</td><td>190</td><td><span class="card-info"><span class="cn">秘方饮</span> <span class="ci">3024</span></span></td><td></td></tr>
+<tr><td class="id-cell">23121</td><td class="name-cell">薄荷</td><td class="type-cell">草</td><td>219</td><td>190</td><td><span class="card-info"><span class="cn">秘方饮</span> <span class="ci">3024</span></span></td><td></td></tr>
+<tr><td class="id-cell">23123</td><td class="name-cell">佛手</td><td class="type-cell">果</td><td>223</td><td>194</td><td><span class="card-info"><span class="cn">花露</span> <span class="ci">3025</span></span></td><td></td></tr>
+<tr><td class="id-cell">23124</td><td class="name-cell">牡丹花</td><td class="type-cell">花</td><td>223</td><td>194</td><td><span class="card-info"><span class="cn">花露</span> <span class="ci">3025</span></span></td><td></td></tr>
+<tr><td class="id-cell">23125</td><td class="name-cell">兰花</td><td class="type-cell">花</td><td>223</td><td>194</td><td><span class="card-info"><span class="cn">花露</span> <span class="ci">3025</span></span></td><td></td></tr>
+<tr><td class="id-cell">23126</td><td class="name-cell">石斛</td><td class="type-cell">草</td><td>278</td><td>139</td><td><span class="card-info"><span class="cn">糖渍</span> <span class="ci">3017</span></span></td><td></td></tr>
+<tr><td class="id-cell">23127</td><td class="name-cell">雪菊</td><td class="type-cell">花</td><td>228</td><td>99</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+</tbody></table>
+<h2>传说珍品 · SSR级食材 <span class="tag" style="background:var(--ssr-color);color:#1a1510">4种</span></h2>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23079</td><td class="name-cell">昆仑雪菊</td><td class="type-cell">花</td><td>250</td><td>213</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23094</td><td class="name-cell">铁皮石斛</td><td class="type-cell">草</td><td>320</td><td>268</td><td><span class="card-info"><span class="cn">冰酪</span> <span class="ci">3019</span></span></td><td></td></tr>
+<tr><td class="id-cell">23098</td><td class="name-cell">曼珠沙华</td><td class="type-cell">花</td><td>210</td><td>168</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23099</td><td class="name-cell">优昙华</td><td class="type-cell">花</td><td>210</td><td>168</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+</tbody></table>
+<h2>上古神话 · UR级食材 <span class="tag" style="background:var(--ur-color)">4种</span></h2>
+<table><thead><tr><th>ID</th><th>食材名</th><th>类型</th><th>经验</th><th>金币</th><th>所属底卡</th><th>状态</th></tr></thead><tbody>
+<tr><td class="id-cell">23078</td><td class="name-cell">蟠桃</td><td class="type-cell">果</td><td>347</td><td>305</td><td><span class="card-info"><span class="cn">酥山</span> <span class="ci">3020</span></span></td><td></td></tr>
+<tr><td class="id-cell">23093</td><td class="name-cell">昆仑灵芝</td><td class="type-cell">草</td><td>400</td><td>358</td><td><span class="card-info"><span class="cn">冰酪</span> <span class="ci">3019</span></span></td><td></td></tr>
+<tr><td class="id-cell">23096</td><td class="name-cell">瑶池莲</td><td class="type-cell">花</td><td>416</td><td>369</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+<tr><td class="id-cell">23097</td><td class="name-cell">蓬莱仙果</td><td class="type-cell">果</td><td>393</td><td>347</td><td>—</td><td><span class="locked-tag">锁定</span></td></tr>
+</tbody></table>
+</div>
+<!-- ==================== 命名变更 ==================== -->
+<div id="sec-name" class="section">
+<h2>食材命名变更对照表 <span class="tag shi">34项</span></h2>
+<div class="intro">
+<strong>变更原则：</strong>为后续食材变种预留命名空间，增加限定词/形容词。<br>
+① 基础水果增加<strong>颜色/口感/品种</strong>限定词（如梨→雪梨、杏→黄杏）<br>
+② 进阶食材增加<strong>产地/形态</strong>限定词（如甘蔗→紫甘蔗、核桃→纸皮核桃）<br>
+③ 花卉类增加<strong>颜色</strong>限定词（如菊花→黄菊、梅花→白梅），为同种异色变种留位<br>
+④ 产品命名中统一使用<strong>短名</strong>（2-3字），确保产品名简洁
+</div>
+<table>
+<thead><tr><th>ID</th><th>原名</th><th>新名</th><th>短名</th><th>限定词类型</th><th>设计意图</th></tr></thead>
+<tbody>
+<tr><td class="id-cell">23005</td><td><span class="old-name">杏</span></td><td><span class="new-name">黄杏</span></td><td>杏</td><td>黄</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿杏/白杏留位</td></tr>
+<tr><td class="id-cell">23006</td><td><span class="old-name">西瓜</span></td><td><span class="new-name">冰沙西瓜</span></td><td>西瓜</td><td>冰沙</td><td style="font-size:0.78rem;color:var(--text-dim)">形态限定，为黄瓤西瓜留位</td></tr>
+<tr><td class="id-cell">23008</td><td><span class="old-name">梨</span></td><td><span class="new-name">雪梨</span></td><td>雪梨</td><td>雪</td><td style="font-size:0.78rem;color:var(--text-dim)">品种限定，宋代经典叫法</td></tr>
+<tr><td class="id-cell">23009</td><td><span class="old-name">桃</span></td><td><span class="new-name">蜜桃</span></td><td>蜜桃</td><td>蜜</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为脆桃/酸桃留位</td></tr>
+<tr><td class="id-cell">23010</td><td><span class="old-name">李</span></td><td><span class="new-name">玉李</span></td><td>李</td><td>玉</td><td style="font-size:0.78rem;color:var(--text-dim)">质感限定，为红李/黑李留位</td></tr>
+<tr><td class="id-cell">23011</td><td><span class="old-name">橘</span></td><td><span class="new-name">蜜橘</span></td><td>蜜橘</td><td>蜜</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为脆桃/酸桃留位</td></tr>
+<tr><td class="id-cell">23012</td><td><span class="old-name">橙</span></td><td><span class="new-name">香橙</span></td><td>香橙</td><td>香</td><td style="font-size:0.78rem;color:var(--text-dim)">香气限定，为甜橙品种区分</td></tr>
+<tr><td class="id-cell">23013</td><td><span class="old-name">柚</span></td><td><span class="new-name">蜜柚</span></td><td>蜜柚</td><td>蜜</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为脆桃/酸桃留位</td></tr>
+<tr><td class="id-cell">23014</td><td><span class="old-name">枇杷</span></td><td><span class="new-name">金枇杷</span></td><td>枇杷</td><td>金</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为白枇杷留位</td></tr>
+<tr><td class="id-cell">23015</td><td><span class="old-name">石榴</span></td><td><span class="new-name">红石榴</span></td><td>石榴</td><td>红</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为白石榴留位</td></tr>
+<tr><td class="id-cell">23016</td><td><span class="old-name">柿</span></td><td><span class="new-name">软柿</span></td><td>柿子</td><td>软</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为脆柿/冻柿留位</td></tr>
+<tr><td class="id-cell">23017</td><td><span class="old-name">枣</span></td><td><span class="new-name">红枣</span></td><td>红枣</td><td>红</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为白石榴留位</td></tr>
+<tr><td class="id-cell">23018</td><td><span class="old-name">山楂</span></td><td><span class="new-name">野山楂</span></td><td>山楂</td><td>野</td><td style="font-size:0.78rem;color:var(--text-dim)">产地限定，为栽培山楂留位</td></tr>
+<tr><td class="id-cell">23020</td><td><span class="old-name">龙眼</span></td><td><span class="new-name">桂圆</span></td><td>桂圆</td><td>桂圆</td><td style="font-size:0.78rem;color:var(--text-dim)">别名转换，龙眼的宋代叫法</td></tr>
+<tr><td class="id-cell">23021</td><td><span class="old-name">葡萄</span></td><td><span class="new-name">紫葡萄</span></td><td>葡萄</td><td>紫</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿葡萄留位</td></tr>
+<tr><td class="id-cell">23022</td><td><span class="old-name">桑葚</span></td><td><span class="new-name">紫桑葚</span></td><td>桑葚</td><td>紫</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿葡萄留位</td></tr>
+<tr><td class="id-cell">23024</td><td><span class="old-name">柑</span></td><td><span class="new-name">蜜柑</span></td><td>蜜柑</td><td>蜜</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为脆桃/酸桃留位</td></tr>
+<tr><td class="id-cell">23026</td><td><span class="old-name">核桃</span></td><td><span class="new-name">纸皮核桃</span></td><td>核桃</td><td>纸皮</td><td style="font-size:0.78rem;color:var(--text-dim)">品种限定，为厚壳核桃留位</td></tr>
+<tr><td class="id-cell">23027</td><td><span class="old-name">板栗</span></td><td><span class="new-name">油板栗</span></td><td>板栗</td><td>油</td><td style="font-size:0.78rem;color:var(--text-dim)">品种限定，为板栗品种区分</td></tr>
+<tr><td class="id-cell">23028</td><td><span class="old-name">莲子</span></td><td><span class="new-name">白莲子</span></td><td>莲子</td><td>白</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为红莲子留位</td></tr>
+<tr><td class="id-cell">23029</td><td><span class="old-name">菱角</span></td><td><span class="new-name">红菱</span></td><td>红菱</td><td>红</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为白石榴留位</td></tr>
+<tr><td class="id-cell">23030</td><td><span class="old-name">荸荠</span></td><td><span class="new-name">脆马蹄</span></td><td>马蹄</td><td>脆</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为粉马蹄留位</td></tr>
+<tr><td class="id-cell">23036</td><td><span class="old-name">莲藕</span></td><td><span class="new-name">脆藕</span></td><td>莲藕</td><td>脆</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为粉马蹄留位</td></tr>
+<tr><td class="id-cell">23038</td><td><span class="old-name">火棘</span></td><td><span class="new-name">火棘果</span></td><td>火棘</td><td>—</td><td style="font-size:0.78rem;color:var(--text-dim)">增加辨识度，为变种留位</td></tr>
+<tr><td class="id-cell">23039</td><td><span class="old-name">橄榄</span></td><td><span class="new-name">青橄榄</span></td><td>橄榄</td><td>青</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为黑橄榄留位</td></tr>
+<tr><td class="id-cell">23043</td><td><span class="old-name">木瓜</span></td><td><span class="new-name">番木瓜</span></td><td>木瓜</td><td>番</td><td style="font-size:0.78rem;color:var(--text-dim)">来源限定，为甜品木瓜区分</td></tr>
+<tr><td class="id-cell">23049</td><td><span class="old-name">银杏</span></td><td><span class="new-name">白果</span></td><td>白果</td><td>白</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为红莲子留位</td></tr>
+<tr><td class="id-cell">23052</td><td><span class="old-name">甘蔗</span></td><td><span class="new-name">紫甘蔗</span></td><td>甘蔗</td><td>紫</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿葡萄留位</td></tr>
+<tr><td class="id-cell">23054</td><td><span class="old-name">椰肉</span></td><td><span class="new-name">嫩椰肉</span></td><td>椰肉</td><td>嫩</td><td style="font-size:0.78rem;color:var(--text-dim)">口感限定，为老椰肉留位</td></tr>
+<tr><td class="id-cell">23055</td><td><span class="old-name">黄皮</span></td><td><span class="new-name">黄皮果</span></td><td>黄皮</td><td>黄</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿杏/白杏留位</td></tr>
+<tr><td class="id-cell">23058</td><td><span class="old-name">杨桃</span></td><td><span class="new-name">星杨桃</span></td><td>杨桃</td><td>星</td><td style="font-size:0.78rem;color:var(--text-dim)">形态限定，为长杨桃留位</td></tr>
+<tr><td class="id-cell">23074</td><td><span class="old-name">金银花</span></td><td><span class="new-name">银花</span></td><td>银花</td><td>银花</td><td style="font-size:0.78rem;color:var(--text-dim)">短名简化，全名仍为金银花</td></tr>
+<tr><td class="id-cell">23075</td><td><span class="old-name">菊花</span></td><td><span class="new-name">黄菊</span></td><td>黄菊</td><td>黄</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为绿杏/白杏留位</td></tr>
+<tr><td class="id-cell">23100</td><td><span class="old-name">梅花</span></td><td><span class="new-name">白梅</span></td><td>白梅</td><td>白</td><td style="font-size:0.78rem;color:var(--text-dim)">颜色限定，为红莲子留位</td></tr>
+</tbody></table>
+</div>
+<!-- ==================== 配方成品名 ==================== -->
+<div id="sec-recipe" class="section">
+<h2>市井级配方成品 <span class="tag shi">164个</span></h2>
+<div class="card-header">
+  <span class="ch-name">蜜饮</span>
+  <span class="ch-id">#3001</span>
+  <span class="ch-container">陶碗</span>
+  <span class="ch-count">12 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300101</td><td class="product-name ">满杯杨梅蜜饮</td><td class="ing-list"><span class="rb N">杨梅</span> + <span class="rb N">草莓</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300102</td><td class="product-name ">满杯杨梅蜜露</td><td class="ing-list"><span class="rb N">杨梅</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300103</td><td class="product-name ">多肉杨梅蜜饮</td><td class="ing-list"><span class="rb N">杨梅</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300104</td><td class="product-name ">多肉杨梅蜜露</td><td class="ing-list"><span class="rb N">杨梅</span> + <span class="rb N">黄杏</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300105</td><td class="product-name ">满杯蓝莓蜜饮</td><td class="ing-list"><span class="rb N">蓝莓</span> + <span class="rb N">草莓</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300106</td><td class="product-name ">满杯蓝莓蜜露</td><td class="ing-list"><span class="rb N">蓝莓</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300107</td><td class="product-name ">多肉蓝莓蜜饮</td><td class="ing-list"><span class="rb N">蓝莓</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300108</td><td class="product-name ">多肉蓝莓蜜露</td><td class="ing-list"><span class="rb N">蓝莓</span> + <span class="rb N">黄杏</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300109</td><td class="product-name ">满杯李蜜饮</td><td class="ing-list"><span class="rb N">玉李</span> + <span class="rb N">草莓</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300110</td><td class="product-name ">满杯李蜜露</td><td class="ing-list"><span class="rb N">玉李</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300111</td><td class="product-name ">多肉李蜜饮</td><td class="ing-list"><span class="rb N">玉李</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300112</td><td class="product-name ">多肉李蜜露</td><td class="ing-list"><span class="rb N">玉李</span> + <span class="rb N">黄杏</span> + <span class="rb N">甜瓜</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">冰饮</span>
+  <span class="ch-id">#3002</span>
+  <span class="ch-container">粗瓷大碗</span>
+  <span class="ch-count">8 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300201</td><td class="product-name ">鲜榨西瓜冰饮</td><td class="ing-list"><span class="rb N">冰沙西瓜</span> + <span class="rb N">蜜桃</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300202</td><td class="product-name ">鲜榨西瓜冰沙</td><td class="ing-list"><span class="rb N">冰沙西瓜</span> + <span class="rb N">蜜桃</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300203</td><td class="product-name ">鲜榨雪梨冰饮</td><td class="ing-list"><span class="rb N">雪梨</span> + <span class="rb N">蜜桃</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300204</td><td class="product-name ">鲜榨雪梨冰沙</td><td class="ing-list"><span class="rb N">雪梨</span> + <span class="rb N">蜜桃</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300205</td><td class="product-name ">冰镇西瓜冰饮</td><td class="ing-list"><span class="rb N">冰沙西瓜</span> + <span class="rb N">甜瓜</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300206</td><td class="product-name ">冰镇西瓜冰沙</td><td class="ing-list"><span class="rb N">冰沙西瓜</span> + <span class="rb N">甜瓜</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300207</td><td class="product-name ">冰镇雪梨冰饮</td><td class="ing-list"><span class="rb N">雪梨</span> + <span class="rb N">甜瓜</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300208</td><td class="product-name ">冰镇雪梨冰沙</td><td class="ing-list"><span class="rb N">雪梨</span> + <span class="rb N">甜瓜</span> + <span class="rb N">黄杏</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">糖水</span>
+  <span class="ch-id">#3003</span>
+  <span class="ch-container">白瓷碗</span>
+  <span class="ch-count">18 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300301</td><td class="product-name ">醇香蜜橘糖露</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300302</td><td class="product-name ">醇香蜜橘糖水</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">香橙</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300303</td><td class="product-name ">鲜果蜜橘糖露</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300304</td><td class="product-name ">鲜果蜜橘糖水</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">蜜桃</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300305</td><td class="product-name ">满杯蜜橘糖露</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">草莓</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300306</td><td class="product-name ">满杯蜜橘糖水</td><td class="ing-list"><span class="rb N">蜜橘</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300307</td><td class="product-name ">醇香蜜柚糖露</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300308</td><td class="product-name ">醇香蜜柚糖水</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">香橙</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300309</td><td class="product-name ">鲜果蜜柚糖露</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300310</td><td class="product-name ">鲜果蜜柚糖水</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">蜜桃</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300311</td><td class="product-name ">满杯蜜柚糖露</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">草莓</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300312</td><td class="product-name ">满杯蜜柚糖水</td><td class="ing-list"><span class="rb N">蜜柚</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300313</td><td class="product-name ">醇香石榴糖露</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300314</td><td class="product-name ">醇香石榴糖水</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">香橙</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300315</td><td class="product-name ">鲜果石榴糖露</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300316</td><td class="product-name ">鲜果石榴糖水</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">蜜桃</span> + <span class="rb N">甜瓜</span></td></tr>
+<tr><td class="id-cell">300317</td><td class="product-name ">满杯石榴糖露</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">草莓</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300318</td><td class="product-name ">满杯石榴糖水</td><td class="ing-list"><span class="rb N">红石榴</span> + <span class="rb N">草莓</span> + <span class="rb N">甜瓜</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">豆乳</span>
+  <span class="ch-id">#3004</span>
+  <span class="ch-container">竹筒</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300401</td><td class="product-name ">丝滑柿子乳露</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">红枣</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300402</td><td class="product-name ">丝滑柿子豆乳</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">红枣</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300403</td><td class="product-name ">丝滑柿子乳饮</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">红枣</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300404</td><td class="product-name ">鲜果柿子乳露</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">香橙</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300405</td><td class="product-name ">鲜果柿子豆乳</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">香橙</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300406</td><td class="product-name ">鲜果柿子乳饮</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300407</td><td class="product-name ">醇香柿子乳露</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">蜜桃</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300408</td><td class="product-name ">醇香柿子豆乳</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">蜜桃</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300409</td><td class="product-name ">醇香柿子乳饮</td><td class="ing-list"><span class="rb N">软柿</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300410</td><td class="product-name ">丝滑山楂乳露</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">红枣</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300411</td><td class="product-name ">丝滑山楂豆乳</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">红枣</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300412</td><td class="product-name ">丝滑山楂乳饮</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">红枣</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300413</td><td class="product-name ">鲜果山楂乳露</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">香橙</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300414</td><td class="product-name ">鲜果山楂豆乳</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">香橙</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300415</td><td class="product-name ">鲜果山楂乳饮</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300416</td><td class="product-name ">醇香山楂乳露</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">蜜桃</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300417</td><td class="product-name ">醇香山楂豆乳</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">蜜桃</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300418</td><td class="product-name ">醇香山楂乳饮</td><td class="ing-list"><span class="rb N">野山楂</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300419</td><td class="product-name ">丝滑桂圆乳露</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">红枣</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300420</td><td class="product-name ">丝滑桂圆豆乳</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">红枣</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300421</td><td class="product-name ">丝滑桂圆乳饮</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">红枣</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300422</td><td class="product-name ">鲜果桂圆乳露</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">香橙</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300423</td><td class="product-name ">鲜果桂圆豆乳</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">香橙</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300424</td><td class="product-name ">鲜果桂圆乳饮</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">香橙</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300425</td><td class="product-name ">醇香桂圆乳露</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">蜜桃</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300426</td><td class="product-name ">醇香桂圆豆乳</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">蜜桃</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">300427</td><td class="product-name ">醇香桂圆乳饮</td><td class="ing-list"><span class="rb N">桂圆</span> + <span class="rb N">蜜桃</span> + <span class="rb N">金枇杷</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">酒酿</span>
+  <span class="ch-id">#3005</span>
+  <span class="ch-container">粗瓷盏</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300501</td><td class="product-name ">花果葡萄醉露</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">金枇杷</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300502</td><td class="product-name ">花果葡萄酿饮</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">金枇杷</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300503</td><td class="product-name ">花果葡萄酒酿</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">金枇杷</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300504</td><td class="product-name ">清甜葡萄醉露</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300505</td><td class="product-name ">清甜葡萄酿饮</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300506</td><td class="product-name ">清甜葡萄酒酿</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300507</td><td class="product-name ">醇香葡萄醉露</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">黄杏</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300508</td><td class="product-name ">醇香葡萄酿饮</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">黄杏</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300509</td><td class="product-name ">醇香葡萄酒酿</td><td class="ing-list"><span class="rb N">紫葡萄</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300510</td><td class="product-name ">花果无花果醉露</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">金枇杷</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300511</td><td class="product-name ">花果无花果酿饮</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">金枇杷</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300512</td><td class="product-name ">花果无花果酒酿</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">金枇杷</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300513</td><td class="product-name ">清甜无花果醉露</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300514</td><td class="product-name ">清甜无花果酿饮</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300515</td><td class="product-name ">清甜无花果酒酿</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300516</td><td class="product-name ">醇香无花果醉露</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">黄杏</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300517</td><td class="product-name ">醇香无花果酿饮</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">黄杏</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300518</td><td class="product-name ">醇香无花果酒酿</td><td class="ing-list"><span class="rb N">无花果</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300519</td><td class="product-name ">花果金橘醉露</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">金枇杷</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300520</td><td class="product-name ">花果金橘酿饮</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">金枇杷</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300521</td><td class="product-name ">花果金橘酒酿</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">金枇杷</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300522</td><td class="product-name ">清甜金橘醉露</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300523</td><td class="product-name ">清甜金橘酿饮</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300524</td><td class="product-name ">清甜金橘酒酿</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">300525</td><td class="product-name ">醇香金橘醉露</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">黄杏</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">300526</td><td class="product-name ">醇香金橘酿饮</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">黄杏</span> + <span class="rb N">红枣</span></td></tr>
+<tr><td class="id-cell">300527</td><td class="product-name ">醇香金橘酒酿</td><td class="ing-list"><span class="rb N">金橘</span> + <span class="rb N">黄杏</span> + <span class="rb N">樱桃</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">甜汤</span>
+  <span class="ch-id">#3006</span>
+  <span class="ch-container">汤碗</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300601</td><td class="product-name ">清润核桃暖羹</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300602</td><td class="product-name ">清润核桃甜汤</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">油板栗</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300603</td><td class="product-name ">清润核桃甜露</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">油板栗</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300604</td><td class="product-name ">滋补核桃暖羹</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">蜜柑</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300605</td><td class="product-name ">滋补核桃甜汤</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">蜜柑</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300606</td><td class="product-name ">滋补核桃甜露</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">蜜柑</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300607</td><td class="product-name ">暖身核桃暖羹</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300608</td><td class="product-name ">暖身核桃甜汤</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300609</td><td class="product-name ">暖身核桃甜露</td><td class="ing-list"><span class="rb N">纸皮核桃</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300610</td><td class="product-name ">清润莲子暖羹</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300611</td><td class="product-name ">清润莲子甜汤</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">油板栗</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300612</td><td class="product-name ">清润莲子甜露</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">油板栗</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300613</td><td class="product-name ">滋补莲子暖羹</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">蜜柑</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300614</td><td class="product-name ">滋补莲子甜汤</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">蜜柑</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300615</td><td class="product-name ">滋补莲子甜露</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">蜜柑</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300616</td><td class="product-name ">暖身莲子暖羹</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300617</td><td class="product-name ">暖身莲子甜汤</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300618</td><td class="product-name ">暖身莲子甜露</td><td class="ing-list"><span class="rb N">白莲子</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300619</td><td class="product-name ">清润马蹄暖羹</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300620</td><td class="product-name ">清润马蹄甜汤</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">油板栗</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300621</td><td class="product-name ">清润马蹄甜露</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">油板栗</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300622</td><td class="product-name ">滋补马蹄暖羹</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">蜜柑</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300623</td><td class="product-name ">滋补马蹄甜汤</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">蜜柑</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300624</td><td class="product-name ">滋补马蹄甜露</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">蜜柑</span> + <span class="rb N">荔枝</span></td></tr>
+<tr><td class="id-cell">300625</td><td class="product-name ">暖身马蹄暖羹</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300626</td><td class="product-name ">暖身马蹄甜汤</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">金枇杷</span></td></tr>
+<tr><td class="id-cell">300627</td><td class="product-name ">暖身马蹄甜露</td><td class="ing-list"><span class="rb N">脆马蹄</span> + <span class="rb N">紫桑葚</span> + <span class="rb N">荔枝</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">擂茶</span>
+  <span class="ch-id">#3007</span>
+  <span class="ch-container">陶钵</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300701</td><td class="product-name ">古法枸杞擂茶</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">油板栗</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300702</td><td class="product-name ">古法枸杞茶羹</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">油板栗</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300703</td><td class="product-name ">古法枸杞茶汤</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300704</td><td class="product-name ">手打枸杞擂茶</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">荔枝</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300705</td><td class="product-name ">手打枸杞茶羹</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">荔枝</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300706</td><td class="product-name ">手打枸杞茶汤</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">荔枝</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300707</td><td class="product-name ">鲜磨枸杞擂茶</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">薏仁</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300708</td><td class="product-name ">鲜磨枸杞茶羹</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">薏仁</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300709</td><td class="product-name ">鲜磨枸杞茶汤</td><td class="ing-list"><span class="rb N">枸杞</span> + <span class="rb N">薏仁</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300710</td><td class="product-name ">古法芡实擂茶</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">油板栗</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300711</td><td class="product-name ">古法芡实茶羹</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">油板栗</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300712</td><td class="product-name ">古法芡实茶汤</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300713</td><td class="product-name ">手打芡实擂茶</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">荔枝</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300714</td><td class="product-name ">手打芡实茶羹</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">荔枝</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300715</td><td class="product-name ">手打芡实茶汤</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">荔枝</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300716</td><td class="product-name ">鲜磨芡实擂茶</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">薏仁</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300717</td><td class="product-name ">鲜磨芡实茶羹</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">薏仁</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300718</td><td class="product-name ">鲜磨芡实茶汤</td><td class="ing-list"><span class="rb N">芡实</span> + <span class="rb N">薏仁</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300719</td><td class="product-name ">古法山药擂茶</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">油板栗</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300720</td><td class="product-name ">古法山药茶羹</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">油板栗</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300721</td><td class="product-name ">古法山药茶汤</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">油板栗</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300722</td><td class="product-name ">手打山药擂茶</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">荔枝</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300723</td><td class="product-name ">手打山药茶羹</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">荔枝</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300724</td><td class="product-name ">手打山药茶汤</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">荔枝</span> + <span class="rb N">红菱</span></td></tr>
+<tr><td class="id-cell">300725</td><td class="product-name ">鲜磨山药擂茶</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">薏仁</span> + <span class="rb N">草莓</span></td></tr>
+<tr><td class="id-cell">300726</td><td class="product-name ">鲜磨山药茶羹</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">薏仁</span> + <span class="rb N">百合</span></td></tr>
+<tr><td class="id-cell">300727</td><td class="product-name ">鲜磨山药茶汤</td><td class="ing-list"><span class="rb N">山药</span> + <span class="rb N">薏仁</span> + <span class="rb N">红菱</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">芝麻糊</span>
+  <span class="ch-id">#3008</span>
+  <span class="ch-container">木碗</span>
+  <span class="ch-count">18 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300801</td><td class="product-name ">醇厚莲藕芝麻糊</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb N">青橄榄</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300802</td><td class="product-name ">醇厚莲藕麻露</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb N">青橄榄</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300803</td><td class="product-name ">浓香莲藕芝麻糊</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb N">薏仁</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300804</td><td class="product-name ">浓香莲藕麻露</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb N">薏仁</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300805</td><td class="product-name ">手磨莲藕芝麻糊</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb R">金银花</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300806</td><td class="product-name ">手磨莲藕麻露</td><td class="ing-list"><span class="rb N">脆藕</span> + <span class="rb R">金银花</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300807</td><td class="product-name ">醇厚火棘芝麻糊</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb N">青橄榄</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300808</td><td class="product-name ">醇厚火棘麻露</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb N">青橄榄</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300809</td><td class="product-name ">浓香火棘芝麻糊</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb N">薏仁</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300810</td><td class="product-name ">浓香火棘麻露</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb N">薏仁</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300811</td><td class="product-name ">手磨火棘芝麻糊</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb R">金银花</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300812</td><td class="product-name ">手磨火棘麻露</td><td class="ing-list"><span class="rb N">火棘果</span> + <span class="rb R">金银花</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300813</td><td class="product-name ">醇厚金樱子芝麻糊</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb N">青橄榄</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300814</td><td class="product-name ">醇厚金樱子麻露</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb N">青橄榄</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300815</td><td class="product-name ">浓香金樱子芝麻糊</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb N">薏仁</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300816</td><td class="product-name ">浓香金樱子麻露</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb N">薏仁</span> + <span class="rb R">茉莉</span></td></tr>
+<tr><td class="id-cell">300817</td><td class="product-name ">手磨金樱子芝麻糊</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb R">金银花</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300818</td><td class="product-name ">手磨金樱子麻露</td><td class="ing-list"><span class="rb N">金樱子</span> + <span class="rb R">金银花</span> + <span class="rb R">茉莉</span></td></tr>
+</tbody></table>
+<h2>雅士级配方成品 <span class="tag ya">160个</span></h2>
+<div class="card-header">
+  <span class="ch-name">煎茶</span>
+  <span class="ch-id">#3009</span>
+  <span class="ch-container">青瓷斗笠盏</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">300901</td><td class="product-name ya">青梅酸爽煎茶</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">乌梅</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300902</td><td class="product-name ya">青梅酸爽雅煎</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">乌梅</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300903</td><td class="product-name ya">青梅酸爽清茗</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">乌梅</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300904</td><td class="product-name ya">青梅幽香煎茶</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">榅桲</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300905</td><td class="product-name ya">青梅幽香雅煎</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">榅桲</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300906</td><td class="product-name ya">青梅幽香清茗</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">榅桲</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300907</td><td class="product-name ya">青梅醇厚煎茶</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">芡实</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300908</td><td class="product-name ya">青梅醇厚雅煎</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">芡实</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300909</td><td class="product-name ya">青梅醇厚清茗</td><td class="ing-list"><span class="rb N">青梅</span> + <span class="rb N">芡实</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300910</td><td class="product-name ya">木瓜酸爽煎茶</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">乌梅</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300911</td><td class="product-name ya">木瓜酸爽雅煎</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">乌梅</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300912</td><td class="product-name ya">木瓜酸爽清茗</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">乌梅</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300913</td><td class="product-name ya">木瓜幽香煎茶</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">榅桲</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300914</td><td class="product-name ya">木瓜幽香雅煎</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">榅桲</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300915</td><td class="product-name ya">木瓜幽香清茗</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">榅桲</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300916</td><td class="product-name ya">木瓜醇厚煎茶</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">芡实</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300917</td><td class="product-name ya">木瓜醇厚雅煎</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">芡实</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300918</td><td class="product-name ya">木瓜醇厚清茗</td><td class="ing-list"><span class="rb N">番木瓜</span> + <span class="rb N">芡实</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300919</td><td class="product-name ya">海棠酸爽煎茶</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">乌梅</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300920</td><td class="product-name ya">海棠酸爽雅煎</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">乌梅</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300921</td><td class="product-name ya">海棠酸爽清茗</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">乌梅</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300922</td><td class="product-name ya">海棠幽香煎茶</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">榅桲</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300923</td><td class="product-name ya">海棠幽香雅煎</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">榅桲</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300924</td><td class="product-name ya">海棠幽香清茗</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">榅桲</span> + <span class="rb N">覆盆子</span></td></tr>
+<tr><td class="id-cell">300925</td><td class="product-name ya">海棠醇厚煎茶</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">芡实</span> + <span class="rb N">蜜桃</span></td></tr>
+<tr><td class="id-cell">300926</td><td class="product-name ya">海棠醇厚雅煎</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">芡实</span> + <span class="rb N">香橙</span></td></tr>
+<tr><td class="id-cell">300927</td><td class="product-name ya">海棠醇厚清茗</td><td class="ing-list"><span class="rb N">海棠果</span> + <span class="rb N">芡实</span> + <span class="rb N">覆盆子</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">酪饮</span>
+  <span class="ch-id">#3010</span>
+  <span class="ch-container">白瓷盅</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301001</td><td class="product-name ya">沙果鲜甜酪露</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">林檎</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301002</td><td class="product-name ya">沙果鲜甜乳酪</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">林檎</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301003</td><td class="product-name ya">沙果鲜甜酪饮</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">林檎</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301004</td><td class="product-name ya">沙果醇滑酪露</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">白果</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301005</td><td class="product-name ya">沙果醇滑乳酪</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">白果</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301006</td><td class="product-name ya">沙果醇滑酪饮</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">白果</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301007</td><td class="product-name ya">沙果清润酪露</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">薏仁</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301008</td><td class="product-name ya">沙果清润乳酪</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">薏仁</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301009</td><td class="product-name ya">沙果清润酪饮</td><td class="ing-list"><span class="rb N">沙果</span> + <span class="rb N">薏仁</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301010</td><td class="product-name ya">茯苓鲜甜酪露</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">林檎</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301011</td><td class="product-name ya">茯苓鲜甜乳酪</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">林檎</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301012</td><td class="product-name ya">茯苓鲜甜酪饮</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">林檎</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301013</td><td class="product-name ya">茯苓醇滑酪露</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">白果</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301014</td><td class="product-name ya">茯苓醇滑乳酪</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">白果</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301015</td><td class="product-name ya">茯苓醇滑酪饮</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">白果</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301016</td><td class="product-name ya">茯苓清润酪露</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">薏仁</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301017</td><td class="product-name ya">茯苓清润乳酪</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">薏仁</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301018</td><td class="product-name ya">茯苓清润酪饮</td><td class="ing-list"><span class="rb N">白茯苓</span> + <span class="rb N">薏仁</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301019</td><td class="product-name ya">榛子鲜甜酪露</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">林檎</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301020</td><td class="product-name ya">榛子鲜甜乳酪</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">林檎</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301021</td><td class="product-name ya">榛子鲜甜酪饮</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">林檎</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301022</td><td class="product-name ya">榛子醇滑酪露</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">白果</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301023</td><td class="product-name ya">榛子醇滑乳酪</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">白果</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301024</td><td class="product-name ya">榛子醇滑酪饮</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">白果</span> + <span class="rb N">黄杏</span></td></tr>
+<tr><td class="id-cell">301025</td><td class="product-name ya">榛子清润酪露</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">薏仁</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301026</td><td class="product-name ya">榛子清润乳酪</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">薏仁</span> + <span class="rb N">蜜柑</span></td></tr>
+<tr><td class="id-cell">301027</td><td class="product-name ya">榛子清润酪饮</td><td class="ing-list"><span class="rb N">榛子</span> + <span class="rb N">薏仁</span> + <span class="rb N">黄杏</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">杏仁酪</span>
+  <span class="ch-id">#3011</span>
+  <span class="ch-container">青白瓷杯</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301101</td><td class="product-name ya">松子清雅仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">百合</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301102</td><td class="product-name ya">松子清雅杏仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">百合</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301103</td><td class="product-name ya">松子清雅仁露</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">百合</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301104</td><td class="product-name ya">松子椰香仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301105</td><td class="product-name ya">松子椰香杏仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301106</td><td class="product-name ya">松子椰香仁露</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301107</td><td class="product-name ya">松子蜜甜仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">无花果</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301108</td><td class="product-name ya">松子蜜甜杏仁酪</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">无花果</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301109</td><td class="product-name ya">松子蜜甜仁露</td><td class="ing-list"><span class="rb N">松子</span> + <span class="rb N">无花果</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301110</td><td class="product-name ya">香橼清雅仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">百合</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301111</td><td class="product-name ya">香橼清雅杏仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">百合</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301112</td><td class="product-name ya">香橼清雅仁露</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">百合</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301113</td><td class="product-name ya">香橼椰香仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301114</td><td class="product-name ya">香橼椰香杏仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301115</td><td class="product-name ya">香橼椰香仁露</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301116</td><td class="product-name ya">香橼蜜甜仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">无花果</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301117</td><td class="product-name ya">香橼蜜甜杏仁酪</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">无花果</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301118</td><td class="product-name ya">香橼蜜甜仁露</td><td class="ing-list"><span class="rb N">香橼</span> + <span class="rb N">无花果</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301119</td><td class="product-name ya">黄皮清雅仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">百合</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301120</td><td class="product-name ya">黄皮清雅杏仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">百合</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301121</td><td class="product-name ya">黄皮清雅仁露</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">百合</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301122</td><td class="product-name ya">黄皮椰香仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301123</td><td class="product-name ya">黄皮椰香杏仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301124</td><td class="product-name ya">黄皮椰香仁露</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">嫩椰肉</span> + <span class="rb N">紫甘蔗</span></td></tr>
+<tr><td class="id-cell">301125</td><td class="product-name ya">黄皮蜜甜仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">无花果</span> + <span class="rb N">榅桲</span></td></tr>
+<tr><td class="id-cell">301126</td><td class="product-name ya">黄皮蜜甜杏仁酪</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">无花果</span> + <span class="rb N">青橄榄</span></td></tr>
+<tr><td class="id-cell">301127</td><td class="product-name ya">黄皮蜜甜仁露</td><td class="ing-list"><span class="rb N">黄皮果</span> + <span class="rb N">无花果</span> + <span class="rb N">紫甘蔗</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">露饮</span>
+  <span class="ch-id">#3012</span>
+  <span class="ch-container">琉璃盏</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301201</td><td class="product-name ya">芭蕉花芳甘露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">海棠果</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301202</td><td class="product-name ya">芭蕉花芳露饮</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">海棠果</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301203</td><td class="product-name ya">芭蕉花芳清露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">海棠果</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301204</td><td class="product-name ya">芭蕉野韵甘露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">刺梨</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301205</td><td class="product-name ya">芭蕉野韵露饮</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">刺梨</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301206</td><td class="product-name ya">芭蕉野韵清露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">刺梨</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301207</td><td class="product-name ya">芭蕉酸爽甘露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">青梅</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301208</td><td class="product-name ya">芭蕉酸爽露饮</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">青梅</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301209</td><td class="product-name ya">芭蕉酸爽清露</td><td class="ing-list"><span class="rb N">芭蕉</span> + <span class="rb N">青梅</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301210</td><td class="product-name ya">杨桃花芳甘露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301211</td><td class="product-name ya">杨桃花芳露饮</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301212</td><td class="product-name ya">杨桃花芳清露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301213</td><td class="product-name ya">杨桃野韵甘露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301214</td><td class="product-name ya">杨桃野韵露饮</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301215</td><td class="product-name ya">杨桃野韵清露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301216</td><td class="product-name ya">杨桃酸爽甘露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">青梅</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301217</td><td class="product-name ya">杨桃酸爽露饮</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">青梅</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301218</td><td class="product-name ya">杨桃酸爽清露</td><td class="ing-list"><span class="rb N">星杨桃</span> + <span class="rb N">青梅</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301219</td><td class="product-name ya">猕猴桃花芳甘露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301220</td><td class="product-name ya">猕猴桃花芳露饮</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301221</td><td class="product-name ya">猕猴桃花芳清露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">海棠果</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301222</td><td class="product-name ya">猕猴桃野韵甘露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301223</td><td class="product-name ya">猕猴桃野韵露饮</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301224</td><td class="product-name ya">猕猴桃野韵清露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">刺梨</span> + <span class="rb N">乌梅</span></td></tr>
+<tr><td class="id-cell">301225</td><td class="product-name ya">猕猴桃酸爽甘露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">青梅</span> + <span class="rb N">余甘子</span></td></tr>
+<tr><td class="id-cell">301226</td><td class="product-name ya">猕猴桃酸爽露饮</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">青梅</span> + <span class="rb N">金橘</span></td></tr>
+<tr><td class="id-cell">301227</td><td class="product-name ya">猕猴桃酸爽清露</td><td class="ing-list"><span class="rb N">猕猴桃</span> + <span class="rb N">青梅</span> + <span class="rb N">乌梅</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">蜜煎</span>
+  <span class="ch-id">#3016</span>
+  <span class="ch-container">漆盒</span>
+  <span class="ch-count">27 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301601</td><td class="product-name ya">玫瑰菊芳蜜饯</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb R">黄菊</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301602</td><td class="product-name ya">玫瑰菊芳蜜糖</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb R">黄菊</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301603</td><td class="product-name ya">玫瑰菊芳蜜煎</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb R">黄菊</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301604</td><td class="product-name ya">玫瑰花艳蜜饯</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb SR">红花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301605</td><td class="product-name ya">玫瑰花艳蜜糖</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb SR">红花</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301606</td><td class="product-name ya">玫瑰花艳蜜煎</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb SR">红花</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301607</td><td class="product-name ya">玫瑰鲜橘蜜饯</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb N">蜜柑</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301608</td><td class="product-name ya">玫瑰鲜橘蜜糖</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb N">蜜柑</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301609</td><td class="product-name ya">玫瑰鲜橘蜜煎</td><td class="ing-list"><span class="rb R">玫瑰</span> + <span class="rb N">蜜柑</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301610</td><td class="product-name ya">月季菊芳蜜饯</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb R">黄菊</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301611</td><td class="product-name ya">月季菊芳蜜糖</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb R">黄菊</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301612</td><td class="product-name ya">月季菊芳蜜煎</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb R">黄菊</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301613</td><td class="product-name ya">月季花艳蜜饯</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb SR">红花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301614</td><td class="product-name ya">月季花艳蜜糖</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb SR">红花</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301615</td><td class="product-name ya">月季花艳蜜煎</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb SR">红花</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301616</td><td class="product-name ya">月季鲜橘蜜饯</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb N">蜜柑</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301617</td><td class="product-name ya">月季鲜橘蜜糖</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb N">蜜柑</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301618</td><td class="product-name ya">月季鲜橘蜜煎</td><td class="ing-list"><span class="rb R">月季</span> + <span class="rb N">蜜柑</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301619</td><td class="product-name ya">芍药菊芳蜜饯</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb R">黄菊</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301620</td><td class="product-name ya">芍药菊芳蜜糖</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb R">黄菊</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301621</td><td class="product-name ya">芍药菊芳蜜煎</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb R">黄菊</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301622</td><td class="product-name ya">芍药花艳蜜饯</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb SR">红花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301623</td><td class="product-name ya">芍药花艳蜜糖</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb SR">红花</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301624</td><td class="product-name ya">芍药花艳蜜煎</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb SR">红花</span> + <span class="rb N">樱桃</span></td></tr>
+<tr><td class="id-cell">301625</td><td class="product-name ya">芍药鲜橘蜜饯</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb N">蜜柑</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301626</td><td class="product-name ya">芍药鲜橘蜜糖</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb N">蜜柑</span> + <span class="rb SR">金盏花</span></td></tr>
+<tr><td class="id-cell">301627</td><td class="product-name ya">芍药鲜橘蜜煎</td><td class="ing-list"><span class="rb R">芍药</span> + <span class="rb N">蜜柑</span> + <span class="rb N">樱桃</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">糖渍</span>
+  <span class="ch-id">#3017</span>
+  <span class="ch-container">青瓷碟</span>
+  <span class="ch-count">18 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301701</td><td class="product-name ya">桂花茶雅蜜渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb SR">山茶花</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301703</td><td class="product-name ya">桂花茶雅糖渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb SR">山茶花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301704</td><td class="product-name ya">桂花忘忧蜜渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb SR">忘忧草</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301706</td><td class="product-name ya">桂花忘忧糖渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb SR">忘忧草</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301707</td><td class="product-name ya">桂花玫香蜜渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb R">玫瑰</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301709</td><td class="product-name ya">桂花玫香糖渍</td><td class="ing-list"><span class="rb R">桂花</span> + <span class="rb R">玫瑰</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301710</td><td class="product-name ya">栀子茶雅蜜渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb SR">山茶花</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301712</td><td class="product-name ya">栀子茶雅糖渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb SR">山茶花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301713</td><td class="product-name ya">栀子忘忧蜜渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb SR">忘忧草</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301715</td><td class="product-name ya">栀子忘忧糖渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb SR">忘忧草</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301716</td><td class="product-name ya">栀子玫香蜜渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb R">玫瑰</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301718</td><td class="product-name ya">栀子玫香糖渍</td><td class="ing-list"><span class="rb R">栀子</span> + <span class="rb R">玫瑰</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301719</td><td class="product-name ya">石斛茶雅蜜渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb SR">山茶花</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301721</td><td class="product-name ya">石斛茶雅糖渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb SR">山茶花</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301722</td><td class="product-name ya">石斛忘忧蜜渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb SR">忘忧草</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301724</td><td class="product-name ya">石斛忘忧糖渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb SR">忘忧草</span> + <span class="rb R">白兰</span></td></tr>
+<tr><td class="id-cell">301725</td><td class="product-name ya">石斛玫香蜜渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb R">玫瑰</span> + <span class="rb SR">合欢花</span></td></tr>
+<tr><td class="id-cell">301727</td><td class="product-name ya">石斛玫香糖渍</td><td class="ing-list"><span class="rb SR">石斛</span> + <span class="rb R">玫瑰</span> + <span class="rb R">白兰</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">果酒</span>
+  <span class="ch-id">#3018</span>
+  <span class="ch-container">黑釉盏</span>
+  <span class="ch-count">3 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301801</td><td class="product-name ya">荷花酿</td><td class="ing-list"><span class="rb R">荷花</span> + <span class="rb SR">五味子</span> + <span class="rb R">槐花</span></td></tr>
+<tr><td class="id-cell">301810</td><td class="product-name ya">白梅酿</td><td class="ing-list"><span class="rb R">白梅</span> + <span class="rb SR">五味子</span> + <span class="rb R">槐花</span></td></tr>
+<tr><td class="id-cell">301819</td><td class="product-name ya">杏花酿</td><td class="ing-list"><span class="rb R">杏花</span> + <span class="rb SR">五味子</span> + <span class="rb R">槐花</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">花露</span>
+  <span class="ch-id">#3025</span>
+  <span class="ch-container">青瓷莲瓣碗</span>
+  <span class="ch-count">4 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">302501</td><td class="product-name ya">牡丹槿花露</td><td class="ing-list"><span class="rb SR">牡丹花</span> + <span class="rb R">木槿</span> + <span class="rb R">迎春花</span></td></tr>
+<tr><td class="id-cell">302504</td><td class="product-name ya">牡丹佛花露</td><td class="ing-list"><span class="rb SR">牡丹花</span> + <span class="rb SR">佛手</span> + <span class="rb R">迎春花</span></td></tr>
+<tr><td class="id-cell">302510</td><td class="product-name ya">兰花槿花露</td><td class="ing-list"><span class="rb SR">兰花</span> + <span class="rb R">木槿</span> + <span class="rb R">迎春花</span></td></tr>
+<tr><td class="id-cell">302513</td><td class="product-name ya">兰花佛花露</td><td class="ing-list"><span class="rb SR">兰花</span> + <span class="rb SR">佛手</span> + <span class="rb R">迎春花</span></td></tr>
+</tbody></table>
+<h2>贡品级配方成品 <span class="tag gong">15个</span></h2>
+<div class="card-header">
+  <span class="ch-name">冰酪</span>
+  <span class="ch-id">#3019</span>
+  <span class="ch-container">青瓷冰碗</span>
+  <span class="ch-count">1 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">301901</td><td class="product-name gong">仙芝冰酪</td><td class="ing-list"><span class="rb UR">昆仑灵芝</span> + <span class="rb SSR">铁皮石斛</span> + <span class="rb SR">灵芝</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">酥山</span>
+  <span class="ch-id">#3020</span>
+  <span class="ch-container">白瓷盘</span>
+  <span class="ch-count">3 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">302003</td><td class="product-name gong">蟠桃雪莲酥</td><td class="ing-list"><span class="rb UR">蟠桃</span> + <span class="rb SR">雪莲</span> + <span class="rb SR">桔梗</span></td></tr>
+<tr><td class="id-cell">302006</td><td class="product-name gong">蟠桃红酥</td><td class="ing-list"><span class="rb UR">蟠桃</span> + <span class="rb SR">藏红花</span> + <span class="rb SR">桔梗</span></td></tr>
+<tr><td class="id-cell">302009</td><td class="product-name gong">蟠桃海酥</td><td class="ing-list"><span class="rb UR">蟠桃</span> + <span class="rb SR">胖大海</span> + <span class="rb SR">桔梗</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">桂花酿</span>
+  <span class="ch-id">#3022</span>
+  <span class="ch-container">建盏</span>
+  <span class="ch-count">4 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">302201</td><td class="product-name gong">洛神丹银酿</td><td class="ing-list"><span class="rb SR">洛神花</span> + <span class="rb SR">丹桂</span> + <span class="rb SR">银桂</span></td></tr>
+<tr><td class="id-cell">302202</td><td class="product-name gong">洛神丹四季酿</td><td class="ing-list"><span class="rb SR">洛神花</span> + <span class="rb SR">丹桂</span> + <span class="rb SR">四季桂</span></td></tr>
+<tr><td class="id-cell">302204</td><td class="product-name gong">洛神金银酿</td><td class="ing-list"><span class="rb SR">洛神花</span> + <span class="rb SR">金桂</span> + <span class="rb SR">银桂</span></td></tr>
+<tr><td class="id-cell">302205</td><td class="product-name gong">洛神金四季酿</td><td class="ing-list"><span class="rb SR">洛神花</span> + <span class="rb SR">金桂</span> + <span class="rb SR">四季桂</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">荷叶饮</span>
+  <span class="ch-id">#3023</span>
+  <span class="ch-container">玉盏</span>
+  <span class="ch-count">4 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">302301</td><td class="product-name gong">金莲含笑玉饮</td><td class="ing-list"><span class="rb SR">金莲花</span> + <span class="rb SR">含笑花</span> + <span class="rb R">玉兰</span></td></tr>
+<tr><td class="id-cell">302302</td><td class="product-name gong">金莲含笑辛饮</td><td class="ing-list"><span class="rb SR">金莲花</span> + <span class="rb SR">含笑花</span> + <span class="rb SR">辛夷花</span></td></tr>
+<tr><td class="id-cell">302304</td><td class="product-name gong">金莲瑞香玉饮</td><td class="ing-list"><span class="rb SR">金莲花</span> + <span class="rb SR">瑞香花</span> + <span class="rb R">玉兰</span></td></tr>
+<tr><td class="id-cell">302305</td><td class="product-name gong">金莲瑞香辛饮</td><td class="ing-list"><span class="rb SR">金莲花</span> + <span class="rb SR">瑞香花</span> + <span class="rb SR">辛夷花</span></td></tr>
+</tbody></table>
+<div class="card-header">
+  <span class="ch-name">秘方饮</span>
+  <span class="ch-id">#3024</span>
+  <span class="ch-container">金碗</span>
+  <span class="ch-count">3 个成品</span>
+</div>
+<table><thead><tr><th>配方ID</th><th>产品名</th><th>食材组成</th></tr></thead><tbody>
+<tr><td class="id-cell">302409</td><td class="product-name gong">素馨薄荷饮</td><td class="ing-list"><span class="rb R">素馨</span> + <span class="rb R">蔷薇</span> + <span class="rb SR">薄荷</span></td></tr>
+<tr><td class="id-cell">302418</td><td class="product-name gong">水仙薄荷饮</td><td class="ing-list"><span class="rb SR">水仙花</span> + <span class="rb R">蔷薇</span> + <span class="rb SR">薄荷</span></td></tr>
+<tr><td class="id-cell">302427</td><td class="product-name gong">米兰薄荷饮</td><td class="ing-list"><span class="rb SR">米兰花</span> + <span class="rb R">蔷薇</span> + <span class="rb SR">薄荷</span></td></tr>
+</tbody></table>
+</div>
+<div class="note-section">
+<h3>设计说明</h3>
+<p><strong>一、食材限定词设计</strong></p>
+<p>共修订<strong>34种</strong>食材名称，主要变更类型：</p>
+<ul style="padding-left:1.5rem;margin:0.5rem 0;">
+<li><strong>颜色限定</strong>：梨→雪梨、葡萄→紫葡萄、枇杷→金枇杷，为异色变种预留</li>
+<li><strong>口感限定</strong>：柿→软柿、荸荠→脆马蹄、核桃→纸皮核桃</li>
+<li><strong>品种限定</strong>：龙眼→桂圆（宋代叫法）、银杏→白果（食用名）、木瓜→番木瓜</li>
+<li><strong>花卉颜色</strong>：菊花→黄菊、梅花→白梅，为同种异色花卉留位</li>
+</ul>
+
+<p><strong>二、产品命名体系</strong></p>
+<ul style="padding-left:1.5rem;margin:0.5rem 0;">
+<li><strong>市井级</strong>（3001-3008）：喜茶风格前缀（满杯/多肉/鲜榨/手打/冰镇/醇香/浓郁等），亲切接地气</li>
+<li><strong>雅士级</strong>（3009-3012/3016-3018/3025）：清/醇/幽/雅等雅致修饰，文人茶趣</li>
+<li><strong>贡品级</strong>（3019-3020/3022-3024）：手工诗意命名，突出珍稀食材意象</li>
+</ul>
+<p>命名模式：前缀词 + 主角食材短名 + 产品类型词，保证每个产品名4-7字且全局唯一。</p>
+
+<p><strong>三、命名对应关系</strong></p>
+<ul style="padding-left:1.5rem;margin:0.5rem 0;">
+<li>同一张底卡内，<strong>主角食材</strong>（槽位1）决定产品名主体</li>
+<li><strong>槽位2食材</strong>决定前缀风格（市井级=口感前缀，雅士级=雅致修饰）</li>
+<li><strong>槽位3食材</strong>决定产品类型变体（如蜜饮→蜜露，煎茶→雅煎→清茗）</li>
+</ul>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
